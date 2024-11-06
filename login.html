@@ -1,21 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Minjae와 함께 킥오프</title>
     <style>
-        body{
-            background-image:url(pictures/soccerStadium1.jpg)
-            
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: url('pictures/soccerStadium1.jpeg') no-repeat;
+            background-size: cover;
+            color: white;
+        }
+
+        /* 네비게이션 바 스타일 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            padding: 15px 20px;
+        }
+
+        .navbar-left, .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-left a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .navbar-right input[type="text"] {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+
+        .login-btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .hero-text {
+            text-align: center;
+            margin-top: 45px;
+            font-size: 60px;
+            font-style: italic;
+        }
+
+        /* 텍스트 색상 설정 */
+        .hero-text .strong-green {
+            color: #7ed957; /* 진한 초록색 */
+            margin-right:20px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        .hero-text .light-green {
+            color: #c1ff72; /* 연한 초록색 */
+            font-style: italic; 
+            font-weight:bold;
+        }
     </style>
 </head>
 <body>
-    <div class="search-box">
-        <input type="text" placeholder="글꼴 및 조합 검색">
-        <span class="icon">🔍</span>
-      </div>
+    <!-- 네비게이션 바 -->
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="#leagues">리그</a>
+            <a href="#teams">팀</a>
+            <a href="#players">선수</a>
+            <a href="#matches">경기</a>
+            <a href="#communities">커뮤니티 & 사이트</a>
+        </div>
+        <div class="navbar-right">
+            <!-- 검색 입력란 -->
+            <input type="text" placeholder="검색할 키워드 입력">
+            <!-- 로그인 버튼 -->
+            <button class="login-btn">로그인</button>
+        </div>
+    </div>
+
+    <!-- 메인 텍스트 -->
+    <div class="hero-text">
+        <span class="strong-green">kick off with</span> <span class="light-green">Minjae</span>
+    </div>
 </body>
 </html>
+
