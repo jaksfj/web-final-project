@@ -3,106 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minjae와 함께 킥오프</title>
+    <title>로그인</title>
     <style>
-        /* 기본 여백과 패딩 초기화 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* 바디 스타일 */
+        /* 기본 스타일 */
         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             font-family: Arial, sans-serif;
-            background: url('pictures/soccerStadium1.jpeg') no-repeat;
-            background-size: cover;
-            color: white;
+            background-color: #f0f0f0;
+            background: url(pictures/login3.webp);
+            background-size:cover;
         }
 
-        /* 네비게이션 바 스타일 */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #000;
-            padding: 15px 20px;
-        }
-
-        .navbar-left, .navbar-right {
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar-left a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: bold;
-        }
-
-        .navbar-right input[type="text"] {
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            margin-right: 10px;
-        }
-
-        .login-btn {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* 메인 텍스트 스타일 */
-        .hero-text {
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
             text-align: center;
-            margin-top: 45px;
-            font-size: 60px;
-            font-style: italic;
         }
 
-        /* 텍스트 색상 설정 */
-        .hero-text .strong-green {
-            color: #7ed957; /* 진한 초록색 */
-            margin-right:20px;
-            font-weight:bold;
-            font-style:italic;
+        .login-container h2 {
+            margin-bottom: 20px;
         }
 
-        .hero-text .light-green {
-            color: #c1ff72; /* 연한 초록색 */
-            font-style: italic; 
-            font-weight:bold;
+        /* 입력란과 버튼이 컨테이너 너비에 맞게 */
+        .login-container input[type="text"], .login-container input[type="password"], .login-container button {
+            width: 100%; /* 컨테이너에 맞추기 */
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /* 여백 포함 계산 */
+        }
+
+        .login-container button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #45a049;
         }
     </style>
+    <script>
+        function validateLogin() {
+            const userId = document.getElementById("userId").value;
+            const password = document.getElementById("password").value;
+
+            // 아이디나 비밀번호 입력 확인
+            if (!userId) {
+                alert("아이디를 입력해주세요.");
+                return false;
+            }
+            if (!password) {
+                alert("비밀번호를 입력해주세요.");
+                return false;
+            }
+
+            // 아이디와 비밀번호 확인
+            if (userId === "김민재" && password === "20517008") {
+                alert("로그인 성공");
+                // 로그인 성공 시 이동할 페이지가 있다면 아래 코드 추가
+                window.location.href = 'login_after.html';
+            } else {
+                alert("아이디 혹은 비밀번호가 틀렸습니다.");
+            }
+            return false; // 페이지 새로고침 방지
+        }
+    </script>
 </head>
 <body>
-    <!-- 네비게이션 바 -->
-    <div class="navbar">
-        <div class="navbar-left">
-            <a href="#leagues">리그</a>
-            <a href="#teams">팀</a>
-            <a href="#players">선수</a>
-            <a href="#matches">경기</a>
-            <a href="#communities">커뮤니티 & 사이트</a>
-        </div>
-        <div class="navbar-right">
-            <!-- 검색 입력란 -->
-            <input type="text" placeholder="검색할 키워드 입력">
-            <!-- 로그인 버튼 -->
-            <button class="login-btn">로그인</button>
-        </div>
-    </div>
-
-    <!-- 메인 텍스트 -->
-    <div class="hero-text">
-        <span class="strong-green">kick off with</span> <span class="light-green">Minjae</span>
+    <div class="login-container">
+        <h2>로그인</h2>
+        <!-- form 태그 추가, 엔터 눌렀을 때 login() 함수 호출 -->
+        <form onsubmit="validateLogin(); return false;"> <!-- 엔터쳐도 로그인함수 호출되고, 페이지 새로고침 방지 -->
+            <input type="text" id="userId" placeholder="아이디 입력">
+            <input type="password" id="password" placeholder="비밀번호 입력">
+            <button type="submit">로그인</button>
+        </form>
     </div>
 </body>
 </html>
-
