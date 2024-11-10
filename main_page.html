@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minjae와 함께 킥오프</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+
+    <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: url('pictures/soccerStadium1.jpeg') no-repeat;
+            background-size: cover;
+            color: white;
+        }
+
+        /* 네비게이션 바 스타일 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            padding: 15px 20px;
+        }
+
+        .navbar-left, .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-left a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .navbar-right input[type="text"] {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+
+        .login-btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .hero-text {
+            text-align: center;
+            margin-top: 45px;
+            font-size: 60px;
+            font-family: "Monoton", sans-serif;
+        }
+
+        /* 텍스트 색상 설정 */
+        .hero-text .strong-green {
+            color: #5aba30; /* 진한 초록색 */
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        .hero-text .light-green {
+            color: #c1ff72; /* 연한 초록색 */
+            font-style: italic; 
+            font-weight:bold;
+        }
+
+        /* 아날로그 시계 스타일 */
+        .clock {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            background-color: black;
+            border: 3px solid #333;
+            border-radius: 50%;
+            margin-right: 10px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom;
+            background-color: white;
+        }
+
+        .hour {
+            width: 4px;
+            height: 15px;
+            background-color: white;
+        }
+
+        .minute {
+            width: 3px;
+            height: 20px;
+            background-color: white;
+        }
+
+        .second {
+            width: 2px;
+            height: 25px;
+            background-color: red;
+        }
+
+    </style>
+    <script>
+        function setClock() {
+            const now = new Date();
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+
+            const secondHand = document.querySelector(".second");
+            const minuteHand = document.querySelector(".minute");
+            const hourHand = document.querySelector(".hour");
+
+            const secondDeg = (seconds / 60) * 360;
+            const minuteDeg = (minutes / 60) * 360 + (seconds / 60) * 6;
+            const hourDeg = (hours % 12) / 12 * 360 + (minutes / 60) * 30;
+
+            secondHand.style.transform = `rotate(${secondDeg}deg) translateX(-50%)`;
+            minuteHand.style.transform = `rotate(${minuteDeg}deg) translateX(-50%)`;
+            hourHand.style.transform = `rotate(${hourDeg}deg) translateX(-50%)`;
+        }
+
+        setInterval(setClock,1000);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            createTicks(); // 경계선 추가
+            setClock(); // 초기 시계 설정
+            setInterval(setClock, 1000); // 시계 업데이트
+        });
+    </script>
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="#leagues" onclick="window.location.href = 'leagues.html'">리그</a>
+            <a href="#teams" onclick="window.location.href = 'teams.html'">팀</a>
+            <a href="#players" onclick="window.location.href = 'players.html'">선수</a>
+            <a href="#matches" onclick="window.location.href = 'matches.html'">경기</a>
+            <a href="#communities" onclick="window.location.href = 'communites_sites.html'">커뮤니티 & 사이트</a>
+        </div>
+        <div class="navbar-right">
+            <!-- 검색 입력란을 폼으로 감싸기 -->
+            <form onsubmit="return loginAlert();">
+                <input type="text" placeholder="검색할 키워드 입력">
+            </form>
+            <!-- 아날로그 시계 -->
+            <div class="clock">
+                <div class="hand hour"></div>
+                <div class="hand minute"></div>
+                <div class="hand second"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 메인 텍스트 -->
+    <div class="hero-text">
+        <span class="strong-green">kick off with</span> <span class="light-green">Minjae</span>
+    </div>
+</body>
+</html>
