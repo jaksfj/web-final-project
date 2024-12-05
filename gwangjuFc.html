@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>광주 FC</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+
+        <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-orange {
+            color:rgb(232, 151, 0);
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            cursor: pointer;
+            width: 42px; 
+            height: 42px; 
+            margin-right: 15px; /* 검색 아이콘과의 간격 */
+        }
+
+        .main-logo {
+            text-align: center;
+            margin-bottom: 50px;
+            background-color: rgb(246, 184, 0);
+        }
+
+        .main-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-section h2 {
+            font-family: "Monoton", sans-serif;
+            font-size: 24px;
+            color: #c4ffc4;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .content-section strong {
+            color: #ffffff;
+        }
+
+        .divider {
+            height: 2px;
+            background: #c4ffc4;
+            margin: 40px 0;
+        }
+
+        p {
+            line-height: 1.8; /* 줄 간 간격을 1.8배로 설정 */
+        }
+
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-orange">GwangJu</span><span
+                class="strong-orange">FC</span>
+        </div>
+
+        <!-- 토트넘 로고 -->
+        <div class="main-logo">
+            <img src="pictures/gwangju_logo.png" alt="광주FC 로고">
+        </div>
+
+        <!-- 소개 섹션 -->
+        <div class="content-section">
+            <h2>1. Team Theme song</h2>
+            <!-- 오디오 플레이어 추가 -->
+            <audio src="audio/gwangju_song.mp3" controls>
+                브라우저가 오디오 태그를 지원하지 않습니다.
+            </audio>
+
+            <div class="divider"></div>
+            <h2>2. Team's Info</h2>
+            <p>
+                광주 FC는 대한민국 K리그1 소속의 프로 축구 클럽으로, <br>
+                "빛고을의 자랑"이자 한국 축구의 새로운 강자로 떠오르고 있는 팀이다. <br>
+                팀의 모토는 <strong>"빛나는 광주, 빛나는 축구"</strong>로, 광주의 정체성과 열정을 축구를 통해
+                표현한다.<br><br>
+                2010년에 창단된 광주 FC는 광주광역시를 연고로 하며, <br>
+                홈구장은 광주축구전용구장(Gwangju Football Stadium)으로 약 10,000명을 수용할 수 있는
+                현대적인 경기장이다.<br><br>
+                광주 FC는 2022년 K리그2(2부 리그)에서 우승하며 K리그1으로 승격한 이후, <br>
+                2023년 시즌에는 돌풍을 일으키며 K리그1에서 상위권을 유지하며 많은 팬들의 주목을 받고 있다.<br><br>
+                광주는 젊고 재능 있는 선수들을 기반으로 한 빠르고 역동적인 경기 스타일로 유명하며, <br>
+                팬들에게는 "빛고을 축구"라는 별칭으로 불린다.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>3. 이 팀을 내가 좋아하게 된 이유</h2>
+            <p>
+                광주 FC는 창단 초기에는 어려움을 겪었지만, 꾸준히 팀의 철학을 지키며 성장해 온 팀이다.
+                특히, 지역사회와 긴밀히 연결되어 있으며, 팬들과의 강력한 유대감이 팀의 큰 매력으로 다가왔다.<br><br>
+                내가 광주 FC를 좋아하게 된 이유는, 그들의 끈질긴 정신력과 젊은 선수들의 도전정신 때문이다.<br>
+                잔디 상태가 매우 좋지 않음에도 불구하고 선수와 감독의 열정으로 인해 팀을 중위권으로 유지하는 것을 보고 대단함을
+                느꼈다.<br><br>
+                2022년 K리그2 우승 이후에는 더욱더 축구 팬들에게 깊은 인상을 남겼다.<br><br>
+                또한, 광주 FC는 경기 중 빠르고 공격적인 플레이를 통해 팬들에게 항상 흥미로운 경기를 선사하며,
+                상대적으로 적은 자원으로도 큰 성과를 내는 팀의 모습은 진정한 프로 정신을 보여준다.<br><br>
+                광주의 홈경기장에서 느낄 수 있는 열정적인 응원과 지역 팬들의 뜨거운 지지 또한 내가 이 팀을 사랑하게 된 또
+                하나의 이유다.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>4. 현재 팀에서 활약하고 있거나 활약했던 대표 선수들</h2>
+            <p>
+                광주 FC에는 대한민국 축구를 대표하는 재능 있는 선수들이 활약해왔다. <br><br>
+                <strong>이정효 감독</strong>: 2022년부터 광주 FC를 지휘하며, 팀을 K리그2 우승으로 이끌고
+                K리그1에서도 강팀으로 만들었다. <br>
+                그의 전술적 유연성과 선수들과의 신뢰 관계는 팀의 성공 비결로 꼽힌다.<br><br>
+                <strong>허율</strong>: 광주 FC에서 활약 중인 젊은 스트라이커로, 팀의 득점을 책임지고 있다.
+                <br>
+                허율은 광주 유소년 시스템을 거쳐 성장한 선수로, 팀의 미래를 이끌 핵심 자원으로 평가받는다.<br><br>
+                <strong>야시르 아사니</strong>: 2023년 광주 FC에 합류한 알바니아 출신 미드필더로, <br>
+                뛰어난 기술과 창의적인 플레이로 팀의 공격을 이끌며 팬들에게 사랑받고 있다.<br><br>
+            </p>
+
+            <div class="divider"></div>
+
+        <h2>More&nbsp;&nbsp;&nbsp;Information</h2>
+            <button class="info-button" onclick="window.open('https://namu.wiki/w/%EA%B4%91%EC%A3%BC%20FC')">
+            더 알아보기
+            </button>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>교토상가 FC</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+
+        <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-purple {
+            color:rgb(163, 33, 255);
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            cursor: pointer;
+            width: 42px; 
+            height: 42px; 
+            margin-right: 15px; /* 검색 아이콘과의 간격 */
+        }
+
+        .main-logo {
+            text-align: center;
+            margin-bottom: 50px;
+            background-color: rgb(178, 10, 255);
+        }
+
+        .main-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-section h2 {
+            font-family: "Monoton", sans-serif;
+            font-size: 24px;
+            color: #c4ffc4;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .content-section strong {
+            color: #ffffff;
+        }
+
+        .divider {
+            height: 2px;
+            background: #c4ffc4;
+            margin: 40px 0;
+        }
+
+        p {
+            line-height: 1.8; /* 줄 간 간격을 1.8배로 설정 */
+        }
+
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-purple">Kyoto&nbsp;&nbsp;&nbsp;Sanga</span>
+        </div>
+
+        <!-- 토트넘 로고 -->
+        <div class="main-logo">
+            <img src="pictures/kyotoSangaFc_logo.png" alt="교토상가 로고">
+        </div>
+
+        <!-- 소개 섹션 -->
+        <div class="content-section">
+            <h2>1. Team Theme song</h2>
+            <!-- 오디오 플레이어 추가 -->
+            <audio src="audio/kyotoSanga_song.mp3" controls>
+                브라우저가 오디오 태그를 지원하지 않습니다.
+            </audio>
+
+            <div class="divider"></div>
+            <h2>2. Team's Info</h2>
+            <p>
+                교토 상가 FC(Kyoto Sanga FC)는 일본 J리그(J1 리그) 소속의 프로 축구 클럽으로, <br>
+                일본 축구 역사에서 가장 오래된 클럽 중 하나로 손꼽힌다. <br><br>
+                팀의 이름 "상가(Sanga)"는 "연대"와 "군대"를 뜻하는 산스크리트어에서 유래했으며, <br>
+                팀의 단결력과 강인함을 상징한다.<br><br>
+                교토 상가는 1922년에 창단된 일본의 전통적인 축구 클럽으로, <br>
+                교토부를 연고로 하며 홈구장은 <strong>교토 교세라 스타디움(Kyoto Kyocera
+                    Stadium)</strong>이다. <br>
+                이 경기장은 약 20,000명을 수용할 수 있는 현대적인 시설을 갖추고 있다.<br><br>
+                교토 상가는 J리그(J1)에서 활약하며, 2002년 <strong>일본 천황배 우승</strong>을 차지한 바
+                있다. <br>
+                이 성과는 클럽 역사에서 가장 큰 업적 중 하나로 기록되어 있다.<br><br>
+                교토 상가는 빠르고 창의적인 플레이 스타일로 유명하며, <br>
+                지역사회와 긴밀히 협력하며 팬들에게 깊은 인상을 남기는 팀이다. <br>
+                특히, 일본 전통 문화를 팀의 아이덴티티에 녹여낸 모습은 교토라는 도시와의 연계를 잘 보여준다.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>3. 이 팀을 내가 좋아하게 된 이유</h2>
+            <p>
+                교토 상가 FC는 일본 축구의 전통을 대표하는 팀으로, 축구와 지역사회를 연결하는 모습이 매우 매력적이다. <br>
+                특히, 일본 전통 문화를 팀의 정체성에 담아낸 점은 축구 클럽 이상으로 지역의 자부심을 보여준다.<br><br>
+                내가 교토 상가를 좋아하게 된 이유는, 그들이 꾸준한 발전과 도전 정신을 보여주는 팀이기 때문이다. <br>
+                또한, <strong>박지성</strong> 선수가 프로 데뷔 초기에 뛰었던 팀이라는 점도 이 팀에 특별한 인상을
+                남겼다. <br>
+                박지성 선수는 교토 상가에서 뛰어난 활약을 보여준 뒤 PSV 에인트호번으로 이적하며,
+                유럽 축구의 정상으로 도약하는 발판을 마련했다.<br><br>
+                팀이 J2 리그(2부 리그)로 강등되었을 때도 팬들의 열정적인 응원과 팀의 끈질긴 노력은 계속되었으며,
+                결국 2021년 J1 리그로 복귀하며 재도약에 성공했다.<br><br>
+                교토 상가는 경기 스타일에서 젊은 선수들의 패기와 경험 많은 베테랑들의 노련함이 조화를 이루며,
+                항상 흥미로운 경기를 펼친다.<br><br>
+                교토 교세라 스타디움에서의 응원 문화와 팬들과의 긴밀한 유대감은,
+                내가 교토 상가를 더욱 좋아하게 만든 또 하나의 이유다.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>4. 현재 팀에서 활약하고 있거나 활약했던 대표 선수들</h2>
+            <p>
+                교토 상가 FC는 일본 축구를 대표하는 다수의 재능 있는 선수들이 활약한 클럽으로,
+                젊은 유망주 발굴과 선수 육성에 강점을 보이는 팀이다.<br><br>
+                <strong>쿠보 다케후사</strong>: 일본 축구를 대표하는 스타로, 교토 상가 유소년 시스템에서 성장하며
+                주목받았다. <br>
+                그는 이후 유럽 무대로 진출해 레알 마드리드, 비야레알, 마요르카 등에서 활약하며 일본 축구의 미래로 평가받고
+                있다.<br><br>
+                <strong>아라키 케이</strong>: 교토 상가에서 뛰어난 플레이메이커로 활약하며 팀의 중원을 책임졌다.
+                <br>
+                그의 정교한 패스와 경기 조율 능력은 팬들에게 깊은 인상을 남겼다.<br><br>
+                <strong>쇼타 마츠바라</strong>: 교토 상가의 전설적인 골키퍼로, 팀의 안정적인 수비를 이끌며
+                J리그에서 오랜 시간 활약했다.<br><br>
+                <strong>타케미야 준</strong>: 현재 교토 상가의 주장으로, 중원의 핵심 역할을 수행하며 팀의 중심에서
+                활약 중이다. <br>
+                그의 헌신적인 플레이와 리더십은 팬들에게 큰 신뢰를 받고 있다.<br><br>
+                <strong>박지성</strong>: 한국 축구를 대표하는 전설적인 선수로, 2000~2002년 교토 상가에서
+                활약했다. <br>
+                그는 팀의 천황배 우승(2002)을 이끌며 유럽 진출의 발판을 마련했다. <br>
+                박지성은 교토 상가에서의 경험을 바탕으로 PSV 에인트호번, 맨체스터 유나이티드로 이적하며, <br>
+                한국 축구 역사상 가장 성공적인 커리어를 쌓았다.
+            </p>
+
+            <div class="divider"></div>
+
+        <h2>More&nbsp;&nbsp;&nbsp;Information</h2>
+            <button class="info-button" onclick="window.open('https://namu.wiki/w/%EA%B5%90%ED%86%A0%20%EC%83%81%EA%B0%80%20FC?from=%EA%B5%90%ED%86%A0%20%EC%83%81%EA%B0%80')">
+            더 알아보기
+            </button>
+
+
+        </div>
+    </body>
+</html>

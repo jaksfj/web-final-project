@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>김민재가 좋아하는 팀들</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+        <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-green {
+            color: #5aba30; /* 진한 초록색 */
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        .main-text .light-green {
+            color: #c1ff72; /* 연한 초록색 */
+            font-style: italic; 
+            font-weight:bold;
+        }
+
+        .team-container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #000;
+            color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .team-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .team-table thead {
+            background-color: #5fcb00;
+            color:black;
+        }
+
+        .team-table th, .team-table td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+        }
+
+        .team-table tbody tr {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+
+        .team-logo {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+            color: #FFD700;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            cursor: pointer;
+            width: 42px; 
+            height: 42px; 
+            margin-right: 15px; /* 검색 아이콘과의 간격 */
+        }
+
+        #tottenham-row {
+            background-color: white; /* 배경색을 흰색으로 */
+            color: black; /* 텍스트 색상 변경 */
+            transition: background-color 0.3s ease; /* 배경색 변화가 부드럽게 */
+        }
+
+        #tottenham-row:hover {
+            background-color: rgb(197, 197, 197);
+        }
+
+        #bayernMunich-row {
+            background-color: #ff0000; /* 빨간색 */
+            color:rgb(255, 255, 255);
+            transition: background-color 0.3s ease;
+        }
+
+        #bayernMunich-row:hover {
+            background-color: #ff6666; /* 밝은 빨간색 */
+        }
+
+        #lutonTown-row {
+            background-color: #ffb974; /* 주황색 */
+            color:rgb(190, 123, 0);
+            transition: background-color 0.3s ease;
+        }
+
+        #lutonTown-row:hover {
+            background-color: #ffa64d; /* 밝은 주황색 */
+        }
+
+        #napoli-row {
+            background-color: #0080ff; /* 파란색 */
+            color:#abd5ff;
+            transition: background-color 0.3s ease;
+        }
+
+        #napoli-row:hover {
+            background-color: #5aaaff; /* 밝은 파란색 */
+        }
+
+        #barcelona-row {
+            background-color: #ff8c1a; /* 주황색 */
+            color:rgb(255, 215, 140);
+            transition: background-color 0.3s ease;
+        }
+
+        #barcelona-row:hover {
+            background-color: #ffa64d; /* 밝은 주황색 */
+        }       
+
+        #dortmund-row {
+            background-color: #ffeb3b; /* 노란색 */
+            transition: background-color 0.3s ease;
+            color:black;
+        }
+
+        #dortmund-row:hover {
+            background-color: #d0c458; /* 어두운 노란색 */
+        }
+
+        #fcSeoul-row {
+            background-color: #ff5353; /* 밝은 빨간색 */
+            transition: background-color 0.3s ease;
+            color:rgb(147, 0, 0);
+        }
+
+        #fcSeoul-row:hover {
+            background-color: #ff8080; /* 더 밝은 빨간색 */
+        }
+
+        #feyenoord-row {
+            background-color: #8b0000; /* 어두운 빨간색 */
+            color:rgb(255, 201, 38);
+            transition: background-color 0.3s ease;
+        }
+
+        #feyenoord-row:hover {
+            background-color: #a00000; /* 덜 어두운 빨간색 */
+        }
+
+        #gwangjuFc-row {
+            background-color: #ffa64d; /* 밝은 주황색 */
+            color:rgb(255, 255, 127);
+            transition: background-color 0.3s ease;
+        }
+
+        #gwangjuFc-row:hover {
+            background-color: #ffbf80; /* 더 밝은 주황색 */
+        }
+
+        #kyotoSangaFc-row {
+            background-color: #800080; /* 보라색 */
+            color:#ffb1ff;
+            transition: background-color 0.3s ease;
+        }
+
+        #kyotoSangaFc-row:hover {
+            background-color: #b849b8; /* 밝은 보라색 */
+        }
+
+        .team-name {
+            font-family: "Black Han Sans", sans-serif;
+            font-weight: 1000;
+            font-style: normal;
+            font-size: 18px; /* 폰트 크기 설정 */
+        }
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <!-- 홈 아이콘 -->
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-green">My&nbsp;&nbsp;&nbsp;Favorite</span> <span
+                class="light-green">Teams</span>
+        </div>
+        <!-- 팀 리스트 -->
+        <div class="team-container">
+            <table class="team-table">
+                <thead>
+                    <tr>
+                        <th>좋아하는 순위</th>
+                        <th>Club</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="tottenham-row"
+                        onclick="window.location.href='tottenham.html'">
+                        <td>1</td>
+                        <td><img src="pictures/tottenham3_logo.png" alt="토트넘"
+                                class="team-logo"><span
+                                class="team-name">Tottenham Hotspur</span></td>
+                    </tr>
+                    <tr id="bayernMunich-row"
+                        onclick="window.location.href='bayernMunich.html'">
+                        <td>2</td>
+                        <td><img src="pictures/bayernMunich2.png" alt="바이에른 뮌헨"
+                                class="team-logo"><span class="team-name">Bayern
+                                Munich</span></td>
+                    </tr>
+                    <tr id="lutonTown-row"
+                        onclick="window.location.href='lutonTown.html'">
+                        <td>3</td>
+                        <td><img src="pictures/lutonTown_logo.png" alt="루턴타운"
+                                class="team-logo"><span class="team-name">Luton
+                                Town</span></td>
+                    </tr>
+                    <tr id="napoli-row"
+                        onclick="window.location.href='napoli.html'">
+                        <td>4</td>
+                        <td><img src="pictures/napoli_logo.png" alt="나폴리"
+                                class="team-logo"><span
+                                class="team-name">Napoli</span></td>
+                    </tr>
+                    <tr id="barcelona-row"
+                        onclick="window.location.href='barcelona.html'">
+                        <td>5</td>
+                        <td><img src="pictures/barcelona_logo.png" alt="바르셀로나"
+                                class="team-logo"><span class="team-name">FC
+                                Barcelona</span></td>
+                    </tr>
+                    <tr id="dortmund-row"
+                        onclick="window.location.href='dortmund.html'">
+                        <td>6</td>
+                        <td><img src="pictures/dortmund_logo.png" alt="도르트문트"
+                                class="team-logo"><span
+                                class="team-name">Borussia Dortmund</span></td>
+                    </tr>
+                    <tr id="fcSeoul-row"
+                        onclick="window.location.href='fcSeoul.html'">
+                        <td>7</td>
+                        <td><img src="pictures/fcSeoul5_logo.png" alt="FC 서울"
+                                class="team-logo"><span
+                                class="team-name">FC&nbsp;서울</span></td>
+                    </tr>
+                    <tr id="feyenoord-row"
+                        onclick="window.location.href='feyenoord.html'">
+                        <td>8</td>
+                        <td><img src="pictures/feyenoord_logo.png" alt="페예노르트"
+                                class="team-logo"><span
+                                class="team-name">Feyenoord</span></td>
+                    </tr>
+                    <tr id="gwangjuFc-row"
+                        onclick="window.location.href='gwangjuFc.html'">
+                        <td>9</td>
+                        <td><img src="pictures/gwangju_logo.png" alt="광주 FC"
+                                class="team-logo"><span class="team-name">광주
+                                FC</span></td>
+                    </tr>
+                    <tr id="kyotoSangaFc-row"
+                        onclick="window.location.href='kyotoSangaFc.html'">
+                        <td>10</td>
+                        <td><img src="pictures/kyotoSangaFc_logo.png"
+                                alt="교토상가 FC" class="team-logo"><span
+                                class="team-name">교토상가 FC</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

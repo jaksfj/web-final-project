@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>나폴리</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+
+        <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-Blue {
+            color: #3180ff; /* 진한 파란색 */
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            cursor: pointer;
+            width: 42px; 
+            height: 42px; 
+            margin-right: 15px; /* 검색 아이콘과의 간격 */
+        }
+
+        .main-logo {
+            text-align: center;
+            margin-bottom: 50px;
+            background-color: rgb(43, 156, 255);
+        }
+
+        .main-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-section h2 {
+            font-family: "Monoton", sans-serif;
+            font-size: 24px;
+            color: #c4ffc4;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .content-section strong {
+            color: #ffffff;
+        }
+
+        .divider {
+            height: 2px;
+            background: #c4ffc4;
+            margin: 40px 0;
+        }
+
+        p {
+            line-height: 1.8; /* 줄 간 간격을 1.8배로 설정 */
+        }
+
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-Blue">Napoli<span>
+                </div>
+
+                <!-- 토트넘 로고 -->
+                <div class="main-logo">
+                    <img src="pictures/napoli_logo.png" alt="루턴타운 로고">
+                </div>
+
+                <!-- 소개 섹션 -->
+                <div class="content-section">
+                    <h2>1. Team Theme song</h2>
+                    <!-- 오디오 플레이어 추가 -->
+                    <audio src="audio/napoli_song.webm" controls>
+                        브라우저가 오디오 태그를 지원하지 않습니다.
+                    </audio>
+
+                    <div class="divider"></div>
+
+                    <h2>2. Team's Info</h2>
+                    <p>
+                        SSC 나폴리(Società Sportiva Calcio Napoli)는 이탈리아의 대표적인 축구
+                        클럽으로, <br>
+                        "열정과 충성"을 상징하는 팀이다. <br>
+                        그들의 구호인 <strong>"Forza Napoli Sempre"</strong>(항상 나폴리!)는
+                        팬들의 강렬한 응원과 열정을 나타낸다.<br><br>
+                        나폴리는 1926년에 설립된 세리에 A 소속 클럽으로, 홈구장은 디에고 아르만도 마라도나
+                        스타디움<br>(구 산 파올로 스타디움)이다. <br><br>
+                        나폴리는 나폴리라는 도시의 정체성을 반영하며, 특히 마라도나 시절 유럽 축구의 정상에 오른
+                        팀으로<br> 유명하다.<br><br>
+                        최근 몇 년간 유망한 감독과 선수들을 바탕으로 이탈리아와 유럽 무대에서 다시 한번 강자로 자리
+                        잡았다.
+                    </p>
+
+                    <div class="divider"></div>
+
+                    <h2>3. 이 팀을 내가 좋아하게 된 이유</h2>
+                    <p>
+                        나폴리는 팀이 힘들 때도 항상 독특한 열정과 팬들의 끝없는 사랑으로 유명하다. <br>
+                        특히, 도시와 팀이 하나로 연결된 팬들의 모습은 다른 축구 클럽에서 쉽게 볼 수 없는 매력으로
+                        다가왔다. <br><br>
+                        나폴리를 좋아하게 된 계기는 그들의 플레이 스타일, 특히 빠르고 역동적인 경기 운영과 화려한 공격
+                        축구가 큰 영향을 끼쳤다.<br><br>
+                        또한 1980년대 후반 마라도나의 활약이 만들어낸 나폴리의 전성기는 전 세계 축구 팬들에게 깊은
+                        인상을 남겼다.<br><br>
+                        작년에 김민재 선수가 수비에서 보여준 엄청난 활약이 나폴리라는 팀에 대한 애정을 더 키워주었다.
+                    </p>
+
+                    <div class="divider"></div>
+
+                    <h2>4. 현재 팀에서 활약하고 있거나 활약했던 우리나라 선수</h2>
+                    <p>
+                        <strong>김민재</strong> 선수는 2022년 나폴리에 입단하며 세리에 A에서 첫 시즌을
+                        보냈다. <br>
+                        그는 나폴리의 핵심 센터백으로 활약하며 33년 만에 나폴리의 세리에 A 우승을 이끌었다. <br>
+                        <br>
+                        김민재는 유럽 최고의 수비수 중 하나로 평가받으며, 세리에 A 올해의 수비수 상을 수상했다. <br>
+                        그의 뛰어난 위치 선정, 강력한 태클, 그리고 안정적인 빌드업 능력은 나폴리가 이탈리아와 유럽
+                        무대에서 경쟁력을 유지하는 데 큰 역할을 했다. <br>
+                        현재는 나폴리를 떠나 바이에른 뮌헨으로 이적했지만, 그의 활약은 나폴리 팬들의 기억에 오래도록 남아
+                        있다.
+                    </p>
+
+                    <div class="divider"></div>
+
+        <h2>More&nbsp;&nbsp;&nbsp;Information</h2>
+            <button class="info-button" onclick="window.open('https://namu.wiki/w/SSC%20%EB%82%98%ED%8F%B4%EB%A6%AC')">
+            더 알아보기
+            </button>
+
+                </div>
+            </body>
+        </html>

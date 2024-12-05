@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>토트넘 챔피언스리그 (18/19 UCL 4강)</title>
+    <!-- 구글 폰트 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+    <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Black Han Sans", serif;
+            font-weight: 400;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-white {
+            color: white;
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 동영상 컨테이너 */
+        .video-container {
+            margin: 20px auto;
+            max-width: 720px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        iframe, video {
+            width: 100%;
+            height: 400px;
+        }
+
+        /* 링크 버튼 */
+        .link-container {
+            margin: 20px 45%;
+            width: 200px;
+            height:40px;
+        }
+
+        .highlight-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: rgb(196, 255, 107);
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+            background-color: #75d645;
+        }
+
+        /* 설명 섹션 */
+        .description-container {
+            margin-top: 100px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+            text-align: left;
+            max-width: 1000px;
+            margin: 0 auto 30px auto; /* 상단, 하단 여백 */
+            padding: 0 100px; /* 왼쪽 오른쪽 여백 */
+            margin-bottom: 50px;
+            margin-left:12%;
+            line-height: 1.8;
+        }
+
+        .description-container h2 {
+            margin-top:20px;
+            font-family: "Monoton", sans-serif;
+            font-size: 24px;
+            color: #c4ffc4;
+            margin-bottom: 20px;
+        }
+
+        .description-container p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom:10px;
+        }
+    </style>
+    <script src="main.js"></script>
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="#leagues" onclick="window.location.href = 'leagues.html'">리그</a>
+            <a href="#teams" onclick="window.location.href = 'teams.html'">팀</a>
+            <a href="#players" onclick="window.location.href = 'players.html'">선수</a>
+            <a href="#matches" onclick="window.location.href = 'matches.html'">경기</a>
+            <a href="#communities" onclick="window.location.href = 'communites_sites.html'">커뮤니티 & 사이트</a>
+        </div>
+        <div class="navbar-right">
+            <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+            <!-- 검색 아이콘 -->
+            <img src="pictures/search_icon3.png" class="search-icon" alt="검색 아이콘" onclick="toggleSearch()">
+            
+            <!-- 아날로그 시계 -->
+            <div class="clock">
+                <div class="hand hour"></div>
+                <div class="hand minute"></div>
+                <div class="hand second"></div>
+            </div>
+        
+            
+            <!-- 숨겨진 검색 폼 -->
+            <form id="search-form" onsubmit="return searchFunction(event);">
+                <span id="search-close" onclick="toggleSearch()">✕</span> <!-- 닫기 버튼 -->
+                <select id="search-category">
+                    <option value="">대분류를 선택하세요</option>
+                    <option value="leagues">리그</option>
+                    <option value="teams">팀</option>
+                    <option value="players">선수</option>
+                    <option value="matches">경기</option>
+                    <option value="communities">커뮤니티 & 사이트</option>
+                </select>
+                <select id="search-keyword">
+                    <option value="">대분류를 먼저 선택하세요</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <div class="main-text">
+        <span class="strong-white">루카스모우라 챔피언스리그 역전골</span>
+    </div>
+
+     <!-- 동영상 섹션 -->
+     <div class="video-container">
+        <video controls="" src="videos/lucasMoura_ayax.mp4" title="루카스모우라 하이라이트">
+        </video>
+    </div>
+
+    <!-- 링크 섹션 -->
+    <div class="link-container">
+        <a href="https://www.youtube.com/watch?v=_-18ZSmjVP4" class="highlight-link">
+            전체 영상보기
+        </a>
+    </div>
+
+    <!-- 설명 섹션 -->
+    <div class="description-container">
+        <h2>하이라이트 상황 설명</h2>
+        <p>
+            2018/19 UEFA 챔피언스리그 4강 2차전, 토트넘 홋스퍼와 아약스의 경기에서 루카스 모우라는 극적인 역전골을 성공시켰다. <br>
+            후반 추가 시간에 터진 이 골은 토트넘을 챔피언스리그 결승으로 이끌었으며, 팀은 원정 다득점 원칙에 따라 극적으로 승리하여 결승에 진출하였다. <br>
+            경기 내내 보여준 루카스의 투지와 집중력은 팀을 구해냈고, 팬들에게 잊지 못할 순간을 만들어준 장면이다.
+        </p>
+        <h2>이 장면을 뽑은 이유</h2>
+        <p>
+            이 골은 축구에서 마지막까지 포기하지 않는 정신과 팀워크가 얼마나 중요한지 보여주는 상징적인 장면이었다. <br>
+            루카스 모우라는 해트트릭으로 팀을 패배 위기에서 구해냈으며, 특히 마지막 골은 그의 빠른 판단력과 냉정함을 잘 보여준다. <br>
+            이 장면은 토트넘 팬들에게 역사적인 순간이 되었으며, 챔피언스리그 역사를 통틀어 가장 극적인 경기 중 하나로 평가받기 때문에 선정하였다. <br>
+            이 장면을 보고 토트넘의 팬이 되었을 정도로 나에게 엄청난 영감을 준 장면이었다. <br>
+            루카스 모우라 선수는 사실 원래 그렇게까지 뛰어난 선수는 아니었지만, 이 경기에서 자신에 대한 한계를 이겨내어 <br>
+            극적인 결승전 진출권을 만들어 낸 것이 나에게 감동을 주었다. 
+        </p>
+    </div>
+</body>
+</html>

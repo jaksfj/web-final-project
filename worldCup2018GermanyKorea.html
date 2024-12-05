@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2018 러시아 월드컵 대한민국 vs 독일</title>
+    <!-- 구글 폰트 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+    <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Black Han Sans", serif;
+            font-weight: 400;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-white {
+            color: white;
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 동영상 컨테이너 */
+        .video-container {
+            margin: 20px auto;
+            max-width: 720px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        iframe, video {
+            width: 100%;
+            height: 400px;
+        }
+
+        /* 링크 버튼 */
+        .link-container {
+            margin: 20px 45%;
+            width: 200px;
+            height:40px;
+        }
+
+        .highlight-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: rgb(196, 255, 107);
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+            background-color: #75d645;
+        }
+
+        /* 설명 섹션 */
+        .description-container {
+            margin-top: 100px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+            text-align: left;
+            max-width: 1000px;
+            margin: 0 auto 30px auto; /* 상단, 하단 여백 */
+            padding: 0 100px; /* 왼쪽 오른쪽 여백 */
+            margin-bottom: 50px;
+            margin-left:12%;
+            line-height: 1.8;
+        }
+
+        .description-container h2 {
+            margin-top:20px;
+            font-family: "Monoton", sans-serif;
+            font-size: 24px;
+            color: #c4ffc4;
+            margin-bottom: 20px;
+        }
+
+        .description-container p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom:10px;
+        }
+    </style>
+    <script src="main.js"></script>
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="#leagues" onclick="window.location.href = 'leagues.html'">리그</a>
+            <a href="#teams" onclick="window.location.href = 'teams.html'">팀</a>
+            <a href="#players" onclick="window.location.href = 'players.html'">선수</a>
+            <a href="#matches" onclick="window.location.href = 'matches.html'">경기</a>
+            <a href="#communities" onclick="window.location.href = 'communites_sites.html'">커뮤니티 & 사이트</a>
+        </div>
+        <div class="navbar-right">
+            <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+            <!-- 검색 아이콘 -->
+            <img src="pictures/search_icon3.png" class="search-icon" alt="검색 아이콘" onclick="toggleSearch()">
+            
+            <!-- 아날로그 시계 -->
+            <div class="clock">
+                <div class="hand hour"></div>
+                <div class="hand minute"></div>
+                <div class="hand second"></div>
+            </div>
+        
+            
+            <!-- 숨겨진 검색 폼 -->
+            <form id="search-form" onsubmit="return searchFunction(event);">
+                <span id="search-close" onclick="toggleSearch()">✕</span> <!-- 닫기 버튼 -->
+                <select id="search-category">
+                    <option value="">대분류를 선택하세요</option>
+                    <option value="leagues">리그</option>
+                    <option value="teams">팀</option>
+                    <option value="players">선수</option>
+                    <option value="matches">경기</option>
+                    <option value="communities">커뮤니티 & 사이트</option>
+                </select>
+                <select id="search-keyword">
+                    <option value="">대분류를 먼저 선택하세요</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <div class="main-text">
+        <span class="strong-white">당시 월드컵의 거인 독일을 쓰러뜨린 대한민국</span>
+    </div>
+
+     <!-- 동영상 섹션 -->
+     <div class="video-container">
+        <video controls="" src="videos/son_worldcup.mp4" title="대한민국 하이라이트">
+        </video>
+    </div>
+
+    <!-- 링크 섹션 -->
+    <div class="link-container">
+        <a href="https://www.youtube.com/watch?v=rE8COCbqT6E" class="highlight-link">
+            전체 영상보기
+        </a>
+    </div>
+
+    <!-- 설명 섹션 -->
+<div class="description-container">
+    <h2>하이라이트 상황 설명</h2>
+    <p>
+        2018 러시아 월드컵 조별리그 마지막 경기에서 대한민국은 세계 최강으로 평가받던 독일을 상대로 역사적인 승리를 거두었다. <br>
+        연장 시간이 거의 끝나갈 무렵, 김영권이 극적인 첫 골을 터뜨렸고, 이후 손흥민이 독일 골키퍼 마누엘 노이어가 올라간 틈을 이용해 추가 골을 기록했다. <br>
+        이 경기는 대한민국이 월드컵 역사상 최초로 독일을 꺾은 경기로, 지난 월드컵 우승국이었던 독일의 대회 탈락을 확정짓는 상징적인 순간이었다.
+    </p>
+    <h2>이 장면을 뽑은 이유</h2>
+    <p>
+        이 경기는 축구에서 약팀도 끝까지 포기하지 않는다면 강팀을 무너뜨릴 수 있다는 가능성을 보여준 사례이다. <br>
+        특히, 당시 세계 랭킹 1위였던 독일을 꺾은 이 경기는 대한민국 축구 역사상 가장 감동적인 순간 중 하나로 남아 있다. <br>
+        손흥민이 추가 골을 넣으며 보여준 스피드와 집중력, 김영권의 투지는 이 경기를 전설로 만들었다. <br>
+        개인적으로 이 경기를 본 순간, 축구가 단순한 스포츠 이상의 감동을 준다는 것을 깨달았고, 대한민국 축구의 저력을 실감할 수 있었다. <br>
+        이 장면은 전 국민이 하나 되어 환호했던 기억을 떠올리게 하며, 나에게 축구에 대한 열정을 심어준 순간이었다.<br>
+    </p>
+</div>
+</body>
+</html>

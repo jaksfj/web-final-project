@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>바르셀로나</title>
+    <!-- 구글 폰트 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+    
+    <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-orange {
+            color: #ff8031; /* 진한 주황색 */
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            cursor: pointer;
+            width: 42px; 
+            height: 42px; 
+            margin-right: 15px; /* 검색 아이콘과의 간격 */
+        }
+
+        .main-logo {
+            text-align: center;
+            margin-bottom: 50px;
+            background-color: rgb(255, 128, 0);
+        }
+
+        .main-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-section h2 {
+            font-family: "Monoton", sans-serif;
+            font-size: 24px;
+            color: #c4ffc4;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .content-section strong {
+            color: #ffffff;
+        }
+
+        .divider {
+            height: 2px;
+            background: #c4ffc4;
+            margin: 40px 0;
+        }
+
+        p {
+            line-height: 1.8; /* 줄 간 간격을 1.8배로 설정 */
+        }
+
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+    </style>
+    <script src="main.js"></script>
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="#leagues" onclick="window.location.href = 'leagues.html'">리그</a>
+            <a href="#teams" onclick="window.location.href = 'teams.html'">팀</a>
+            <a href="#players" onclick="window.location.href = 'players.html'">선수</a>
+            <a href="#matches" onclick="window.location.href = 'matches.html'">경기</a>
+            <a href="#communities" onclick="window.location.href = 'communites_sites.html'">커뮤니티 & 사이트</a>
+        </div>
+        <div class="navbar-right">
+            <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘" onclick="window.location.href = 'main_page.html'">
+            <!-- 검색 아이콘 -->
+            <img src="pictures/search_icon3.png" class="search-icon" alt="검색 아이콘" onclick="toggleSearch()">
+            
+            <!-- 아날로그 시계 -->
+            <div class="clock">
+                <div class="hand hour"></div>
+                <div class="hand minute"></div>
+                <div class="hand second"></div>
+            </div>
+        
+            
+            <!-- 숨겨진 검색 폼 -->
+            <form id="search-form" onsubmit="return searchFunction(event);">
+                <span id="search-close" onclick="toggleSearch()">✕</span> <!-- 닫기 버튼 -->
+                <select id="search-category">
+                    <option value="">대분류를 선택하세요</option>
+                    <option value="leagues">리그</option>
+                    <option value="teams">팀</option>
+                    <option value="players">선수</option>
+                    <option value="matches">경기</option>
+                    <option value="communities">커뮤니티 & 사이트</option>
+                </select>
+                <select id="search-keyword">
+                    <option value="">대분류를 먼저 선택하세요</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <div class="main-text">
+        <span class="strong-orange">FC Barcelona<span>
+    </div>
+
+    <!-- 토트넘 로고 -->
+    <div class="main-logo">
+        <img src="pictures/barcelona_logo.png" alt="루턴타운 로고">
+    </div>
+
+    <!-- 소개 섹션 -->
+    <div class="content-section">
+        <h2>1. Team Theme song</h2>
+        <!-- 오디오 플레이어 추가 -->
+        <audio src="audio/barcelona_song.mp3" controls>
+            브라우저가 오디오 태그를 지원하지 않습니다.
+        </audio>
+
+        <div class="divider"></div>
+
+        <h2>2. Team's Info</h2>
+        <p>
+            FC 바르셀로나(Futbol Club Barcelona)는 스페인의 대표적인 축구 클럽으로, <br>
+            "스페인 축구의 상징"이자 세계 축구 역사에서 가장 성공적인 클럽 중 하나로 손꼽힌다. <br>
+            바르셀로나의 모토인 <strong>"Més que un club"</strong>(클럽 그 이상의 존재)는 축구를 넘어 지역 사회와 문화, <br>
+            정치적인 상징성을 갖고 있음을 의미한다.<br><br>
+            1899년에 설립된 바르셀로나는 스페인 라리가 소속이며, 홈구장은 캄 노우(Camp Nou)이다. <br>
+            캄 노우는 유럽 최대 규모의 경기장으로, 약 99,000명을 수용할 수 있다.<br><br>
+            바르셀로나는 26번의 라리가 우승, 31번의 코파 델 레이 우승, 5번의 UEFA 챔피언스리그 우승을 달성하며, <br>
+            스페인과 유럽 무대에서의 전설적인 업적을 남겼다. 특히, 전성기 시절의 <strong>펩 과르디올라</strong> 감독의 "티키타카" 축구는
+            세계 축구의 혁신으로 평가받는다.<br><br>
+            현재 바르셀로나는 과거의 전설적인 유산을 계승하며 젊은 선수들을 중심으로 새로운 전성기를 만들어가고 있다.
+        </p>
+        
+        <div class="divider"></div>
+        
+        <h2>3. 이 팀을 내가 좋아하게 된 이유</h2>
+        <p>
+            바르셀로나는 아름다운 축구 철학과 선수들의 기술적인 플레이로 축구 팬들에게 큰 사랑을 받는 팀이다. <br>
+            특히, 펩 과르디올라 감독이 지휘했던 2008~2012년 시기의 "티키타카" 전술은 바르셀로나를 세계 최고의 클럽으로 만들었고, 나 역시 그 시절의 바르셀로나를 보며 이 팀의 팬이 되었다.<br><br>
+            메시, 사비, 이니에스타, 푸욜 등 한 시대를 풍미했던 선수들이 바르셀로나의 중심이 되어
+            기술적이고 유기적인 축구를 선보였던 당시의 팀은 어떤 스쿼드와도 비교할 수 없다.<br><br>
+            최근에는 새로운 세대의 스타들, 특히 페드리와 가비 같은 젊은 선수들의 활약이
+            팀의 미래를 더욱 기대하게 만든다.
+            <br> 또한 현재 베테랑 스트라이커 레반도프스키가 뛰어난 활약을 펼치면서 리그 1위를 달리고 있어 많은 관심을 가지고 있다.
+        </p>
+        
+        <div class="divider"></div>
+        
+        <h2>4. 현재 팀에서 활약하고 있거나 활약했던 우리나라 선수</h2>
+        <p>
+            <strong>이승우</strong> 선수는 2011년 바르셀로나 유소년 아카데미인 라 마시아(La Masia)에 입단하며 큰 주목을 받았다. <br>
+            그는 "한국의 메시"라는 별명으로 기대를 모았으며, 뛰어난 개인 기술과 창의적인 플레이로 많은 관심을 받았다. <br><br>
+            비록 1군 무대에서 활약하지 못하고 2017년 이탈리아의 헬라스 베로나로 이적했지만, <br>
+            이승우는 라 마시아에서의 경험을 바탕으로 프로 선수로 성장하는 계기를 만들었다.<br><br>
+            현재 바르셀로나에는 한국 선수가 없지만, 전 세계 축구 팬들이 바르셀로나에서 <br>
+            한국 선수가 다시 활약하는 모습을 기대하고 있다.
+        </p>
+
+        <div class="divider"></div>
+
+        <h2>More&nbsp;&nbsp;&nbsp;Information</h2>
+            <button class="info-button" 
+            onclick="window.open('https://namu.wiki/w/FC%20%EB%B0%94%EB%A5%B4%EC%85%80%EB%A1%9C%EB%82%98')">
+            더 알아보기
+            </button>
+        </div>
+    </body>
+</html>

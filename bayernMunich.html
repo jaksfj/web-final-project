@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>바이에른 뮌헨</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+
+        <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-red {
+            color: #ff1818; 
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            cursor: pointer;
+            width: 42px; 
+            height: 42px; 
+            margin-right: 15px; /* 검색 아이콘과의 간격 */
+        }
+
+        .main-logo {
+            text-align: center;
+            margin-bottom: 50px;
+            background-color:red;
+        }
+
+        .main-logo img {
+            width: 200px;
+            height: auto;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-section h2 {
+            font-family: "Monoton", sans-serif;
+            font-size: 24px;
+            color: #c4ffc4;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .content-section strong {
+            color: #ffffff;
+        }
+
+        .divider {
+            height: 2px;
+            background: #c4ffc4;
+            margin: 40px 0;
+        }
+
+        p {
+            line-height: 1.8; /* 줄 간 간격을 1.8배로 설정 */
+        }
+
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-red">BayernMunich</span>
+        </div>
+
+        <!-- 토트넘 로고 -->
+        <div class="main-logo">
+            <img src="pictures/bayernMunich2.png" alt="뮌헨 로고">
+        </div>
+
+        <!-- 소개 섹션 -->
+        <div class="content-section">
+            <h2>1. Team Theme song</h2>
+            <!-- 오디오 플레이어 추가 -->
+            <audio src="audio/bayernMunich_song.mp4" controls>
+                브라우저가 오디오 태그를 지원하지 않습니다.
+            </audio>
+
+            <div class="divider"></div>
+
+            <h2>2. Team's Info</h2>
+            <p>
+                FC 바이에른 뮌헨(Bayern Munich)은 "우리는 강하다(Mia San Mia)"라는 구호로 잘 알려져
+                있으며,
+                독일을 대표하는 축구 클럽이다. <br><br>
+                1900년에 설립된 이 팀은 분데스리가(Bundesliga)의 소속 팀으로, 독일 축구 역사상 가장 성공적인
+                클럽이다. <br>
+                홈구장은 알리안츠 아레나(Allianz Arena)로, 뮌헨에 위치하고 있다. <br>
+                <br>
+                바이에른 뮌헨은 33번의 분데스리가 우승과 6번의 UEFA 챔피언스리그 우승을 포함해 수많은 트로피를 보유하고
+                있으며,
+                특히 2020년에는 트레블(리그, 컵, 챔피언스리그) 우승을 달성하며 전 세계적으로 명성을 떨쳤다. <br><br>
+                또한 독일 축구 대표팀의 중심적인 역할을 하는 선수들을 다수 배출한 것으로도 유명하다.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>3. 이 팀을 내가 좋아하게 된 이유</h2>
+            <p>
+                바이에른 뮌헨은 철저한 조직력과 안정적인 경기 운영 능력으로 전 세계 팬들에게 감탄을 자아내는 팀이다. <br>
+                그리고 과거에 엄청난 실력을 가진 선수들이 모여있었던 빅클럽인 만큼 나의 관심을 이끌기에 충분했다. <br>
+                따라서 나는 이 팀의 강력한 수비와 치밀한 경기 스타일에서 매력을 느꼈고,
+                특히 2013년과 2020년 UEFA 챔피언스리그 우승 장면은 나에게 가장 기억에 남는 순간이었다. <br><br>
+                이 빅클럽의 가장 큰 매력은 시민구단으로 운영되고 있는게 가장 매력적인 팀이라고 생각한다.
+                <br> 따라서 시민들의 의견이 구단에 반영되기 때문에 재정의 안정성과 팬들의 강한 유대감으로 인한 뛰어난 팀
+                운영을 보여주고 있다는
+                점이 나에게 크게 와닿았다. <br>
+                <br>
+                또한, 한국 축구 팬으로서 바이에른 뮌헨에서 활약하고 있는 김민재 선수를 통해 이 팀에 대한 관심이 더욱 커졌다.
+                축구에서의 전통과 현대적인 운영 방식을 결합한 팀이라는 점도 나에게 인상적이었다.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>4. 현재 팀에서 활약하고 있거나 활약했던 우리나라 선수</h2>
+            <p>
+                <strong>정우영</strong> 선수는 2018년 바이에른 뮌헨 II(2군)에서 활동하다가 1군으로
+                승격되었다.
+                <br> 그는 1군 경기에서도 출전하며 가능성을 인정받았지만, 더 많은 경기 시간을 위해 2019년에 프라이부르크로
+                이적했다.
+                <br> 그가 남긴 바이에른 뮌헨에서의 경험은 독일에서의 커리어 발전에 중요한 밑거름이 되었다.
+                <br>
+                <br>
+                <strong>이현주</strong> 선수는 2022년 1월 바이에른 뮌헨으로 임대이적하여 유럽무대에 도전하게
+                되었다.
+                <br> 임대 기간 동안 2군 팀인 바이에른 뮌헨 II에서 인상적인 활약을 펼쳐 구단은 2022년 8월 이현주와
+                2025년까지의 계약을 체결했다. <br>
+                2023년 7월에는 2. 분데스리가의 SV 베헨 비스바덴으로 한 시즌 임대되어 경험을 쌓았으며, 2024년 6월
+                바이에른 뮌헨과의 계약을 2027년까지 연장한 후 하노버 96으로 임대 이적하여 활약하고 있다.<br>
+                <br>
+                <strong>김민재</strong>선수는 2023년 7월 바이에른 뮌헨과 5년 계약을 체결하며 독일 무대에
+                진출했다.
+                이적료는 약 715억 원으로, 아시아 선수 역대 최고 이적료를 기록했다.<br>
+                김민재는 이전 시즌 이탈리아 세리에 A의 나폴리에서 활약하며 팀의 33년 만의 우승을 이끌었고, 세리에 A 최우수
+                수비수로 선정되는 등 뛰어난 수비력을 인정받았다.
+                <br>바이에른 뮌헨이라는 빅클럽에서도 주전 센터백으로 활약하며 팀의 수비를 책임지고 있다.
+            </p>
+
+            <div class="divider"></div>
+
+        <h2>More&nbsp;&nbsp;&nbsp;Information</h2>
+            <button class="info-button" onclick="window.open('https://namu.wiki/w/FC%20%EB%B0%94%EC%9D%B4%EC%97%90%EB%A5%B8%20%EB%AE%8C%ED%97%A8?from=%EB%B0%94%EC%9D%B4%EC%97%90%EB%A5%B8%EB%AE%8C%ED%97%A8ㄴ')">
+            더 알아보기
+            </button>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>바르셀로나</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+
+        <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-yellow {
+            color:yellow;
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            cursor: pointer;
+            width: 42px; 
+            height: 42px; 
+            margin-right: 15px; /* 검색 아이콘과의 간격 */
+        }
+
+        .main-logo {
+            text-align: center;
+            margin-bottom: 50px;
+            background-color: rgb(255, 242, 0);
+        }
+
+        .main-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-section h2 {
+            font-family: "Monoton", sans-serif;
+            font-size: 24px;
+            color: #c4ffc4;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .content-section strong {
+            color: #ffffff;
+        }
+
+        .divider {
+            height: 2px;
+            background: #c4ffc4;
+            margin: 40px 0;
+        }
+
+        p {
+            line-height: 1.8; /* 줄 간 간격을 1.8배로 설정 */
+        }
+
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-yellow">Dortmund<span>
+                </div>
+
+                <!-- 토트넘 로고 -->
+                <div class="main-logo">
+                    <img src="pictures/dortmund_logo.png" alt="도르트문드 로고">
+                </div>
+
+                <!-- 소개 섹션 -->
+                <div class="content-section">
+                    <h2>1. Team Theme song</h2>
+                    <!-- 오디오 플레이어 추가 -->
+                    <audio src="audio/dortmund.mp3" controls>
+                        브라우저가 오디오 태그를 지원하지 않습니다.
+                    </audio>
+
+                    <div class="divider"></div>
+
+                    <h2>2. Team's Info</h2>
+                    <p>
+                        보루시아 도르트문트(Borussia Dortmund)는 독일 분데스리가 소속의 대표적인 축구
+                        클럽으로, <br>
+                        "열정과 젊음"을 상징하는 팀이다. <br>
+                        도르트문트의 슬로건인 <strong>"Echte Liebe"</strong>(진정한 사랑)는 팬들과
+                        구단의 끈끈한 관계를 잘 나타낸다.<br><br>
+                        1909년에 설립된 도르트문트는 홈구장인 지그날 이두나 파크(Signal Iduna Park)를
+                        사용하며,
+                        이 경기장은 약 81,000명을 수용할 수 있는 독일 최대의 축구 경기장이다.<br><br>
+                        도르트문트는 8번의 분데스리가 우승, 5번의 DFB-포칼 우승, 1997년 UEFA 챔피언스리그 우승
+                        등 화려한 전적을 보유하고 있다.<br><br>
+                        또한, 유럽 축구의 거대 클럽들에 비해 상대적으로 낮은 예산에도 불구하고 젊은 유망주 발굴과
+                        뛰어난 육성 시스템을 통해 항상 강력한 전력을 유지해왔다.<br><br>
+                        도르트문트는 황색과 흑색의 유니폼, 그리고 열정적인 "황벽 팬들(Yellow Wall)"로 유명하다.
+                        특히 팬들의 응원 문화는 세계적으로 찬사를 받고 있다.
+                    </p>
+
+                    <div class="divider"></div>
+
+                    <h2>3. 이 팀을 내가 좋아하게 된 이유</h2>
+                    <p>
+                        도르트문트는 열정적이고 공격적인 축구 스타일로 세계 축구 팬들에게 많은 사랑을 받는 팀이다. <br>
+                        특히, 유럽의 강호들과 맞붙어도 결코 물러서지 않는 도르트문트만의 용기와 끈기는 큰 매력으로
+                        다가왔다.<br><br>
+                        내가 도르트문트를 정말 좋아하게 된 이유는, 그들이 항상 젊고 재능 있는 유망주를 발굴하며,
+                        그들의 잠재력을 최대한 끌어내는 팀이기 때문이다.
+                        <br>예를 들어, 마리오 괴체, 로베르트 레반도프스키, 엘링 홀란드, 주드 벨링엄 등과 같은 뛰어난
+                        선수들을 배출하여
+                        세계적인 스타로 성장시켜냈다.<br><br>
+                        도르트문트의 홈구장인 지그날 이두나 파크에서 팬들이 보여주는 "황벽 응원"은 전 세계 축구 팬들에게도
+                        놀라움을 주며,
+                        이 팀의 팬 문화에 빠질 수밖에 없었다.<br><br>
+                    </p>
+
+                    <div class="divider"></div>
+
+                    <h2>4. 현재 팀에서 활약하고 있거나 활약했던 우리나라 선수</h2>
+                    <p>
+                        <strong>지동원</strong> 선수는 2013년 보루시아 도르트문트에 임대 이적하며 큰 주목을
+                        받았다. <br>
+                        그는 당시 팀의 주전 멤버로 자리 잡지는 못했지만, 도르트문트의 2군 경기와 컵 대회에서 뛰며 경험을
+                        쌓았다.<br><br>
+                        도르트문트에서의 짧은 기간 동안 지동원은 독일 축구 스타일을 익히며 유럽 축구에서의 성장을
+                        이루었다.<br><br>
+                        현재 도르트문트에는 한국 선수가 없지만, 유럽 무대에서 도르트문트를 거친 선수들이 <br>
+                        한국 축구에 긍정적인 영향을 미친 점은 큰 의의가 있다.<br><br>
+                        <strong>박주호</strong> 선수는 2015년 보루시아 도르트문트에 입단하며 활약했다.
+                        <br>
+                        스위스와 독일에서의 성공적인 경력을 바탕으로 도르트문트에 합류한 박주호는 좌측 풀백과 미드필더
+                        포지션을 소화하며,
+                        팀의 유틸리티 플레이어로 활약했다. <br><br>
+                        특히, 그는 2015년 UEFA 유로파리그 조별 예선 경기에서 크라스노다르를 상대로
+                        <strong>결승골</strong>을 기록하며 팀의 승리를 이끌었다. <br>
+                        이 골은 도르트문트 팬들에게 깊은 인상을 남겼으며, 박주호의 헌신적인 플레이는 팬들의 많은 사랑을
+                        받았다. <br><br>
+                    </p>
+
+                    <div class="divider"></div>
+
+        <h2>More&nbsp;&nbsp;&nbsp;Information</h2>
+            <button class="info-button" onclick="window.open('https://namu.wiki/w/%EB%B3%B4%EB%A3%A8%EC%8B%9C%EC%95%84%20%EB%8F%84%EB%A5%B4%ED%8A%B8%EB%AC%B8%ED%8A%B8')">
+            더 알아보기
+            </button>
+                </div>
+            </body>
+        </html>

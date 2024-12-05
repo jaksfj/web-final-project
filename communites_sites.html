@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>축구 정보에 도움되는 사이트들</title>
+    <!-- 구글 폰트 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+    <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-green {
+            color: #5aba30; /* 진한 초록색 */
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        .main-text .light-green {
+            color: #c1ff72; /* 연한 초록색 */
+            font-style: italic; 
+            font-weight:bold;
+        }
+
+        .site-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        .site-card {
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .site-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .site-content {
+            padding: 15px;
+        }
+
+        .site-title {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .site-card:hover .site-title {
+            color: #b7ff80;
+            transition: color 0.3s ease;
+        }
+
+        .site-description {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .site-link {
+            display: block;
+            color: #5aba30;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .site-link:hover {
+            color: #6aff6f;
+        }
+
+        .site-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background: #ffffff;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+            color: #FFD700;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            cursor: pointer;
+            width: 42px; 
+            height: 42px; 
+            margin-right: 15px; /* 검색 아이콘과의 간격 */
+        }
+    </style>
+    <script src="main.js"></script>
+    <script>
+        // 이동 함수 정의
+        function navigateTo(value) {
+            window.location.href = value; // value로 설정된 경로로 이동
+        }
+    </script>
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="#leagues" onclick="window.location.href = 'leagues.html'">리그</a>
+            <a href="#teams" onclick="window.location.href = 'teams.html'">팀</a>
+            <a href="#players" onclick="window.location.href = 'players.html'">선수</a>
+            <a href="#matches" onclick="window.location.href = 'matches.html'">경기</a>
+            <a href="#communities" onclick="window.location.href = 'communites_sites.html'">커뮤니티 & 사이트</a>
+        </div>
+        <div class="navbar-right">
+            <!-- 홈 아이콘 -->
+            <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘" onclick="window.location.href = 'main_page.html'">
+            <!-- 검색 아이콘 -->
+            <img src="pictures/search_icon3.png" class="search-icon" alt="검색 아이콘" onclick="toggleSearch()">
+            
+            <!-- 아날로그 시계 -->
+            <div class="clock">
+                <div class="hand hour"></div>
+                <div class="hand minute"></div>
+                <div class="hand second"></div>
+            </div>
+        
+            
+            <!-- 숨겨진 검색 폼 -->
+            <form id="search-form" onsubmit="return searchFunction(event);">
+                <span id="search-close" onclick="toggleSearch()">✕</span> <!-- 닫기 버튼 -->
+                <select id="search-category">
+                    <option value="">대분류를 선택하세요</option>
+                    <option value="leagues">리그</option>
+                    <option value="teams">팀</option>
+                    <option value="players">선수</option>
+                    <option value="matches">경기</option>
+                    <option value="communities">커뮤니티 & 사이트</option>
+                </select>
+                <select id="search-keyword">
+                    <option value="">대분류를 먼저 선택하세요</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <div class="main-text">
+        <span class="strong-green">My&nbsp;&nbsp;&nbsp;Favorite</span> <span class="light-green">Sites</span>
+    </div>
+    <div class="site-container">
+        <div class="site-container">
+            <!-- 소파스코어 -->
+            <div class="site-card" onclick="navigateTo('sofascore.html')">
+                <div class="site-content">
+                    <h2 class="site-title">소파스코어</h2>
+                    <p class="site-description">선수 평점 및 경기 양상을 한눈에 확인</p>
+                </div>
+            </div>
+        
+            <!-- 풋 몹 -->
+            <div class="site-card" onclick="navigateTo('fotmob.html')">
+                <div class="site-content">
+                    <h2 class="site-title">풋 몹</h2>
+                    <p class="site-description">실시간 스코어 확인과 경기 정보 제공</p>
+                </div>
+            </div>
+        
+            <!-- 사커라인 -->
+            <div class="site-card" onclick="navigateTo('soccerline.html')">
+                <div class="site-content">
+                    <h2 class="site-title">사커라인</h2>
+                    <p class="site-description">축구 정보와 커뮤니티 제공</p>
+                </div>
+            </div>
+        
+            <!-- 언더스탯 -->
+            <div class="site-card" onclick="navigateTo('understat.html')">
+                <div class="site-content">
+                    <h2 class="site-title">언더스탯</h2>
+                    <p class="site-description">경기 데이터를 쉽게 파악할 수 있는 사이트</p>
+                </div>
+            </div>
+        
+            <!-- WhoScored -->
+            <div class="site-card" onclick="navigateTo('whoscored.html')">
+                <div class="site-content">
+                    <h2 class="site-title">WhoScored</h2>
+                    <p class="site-description">경기 통계와 선수 평가를 제공</p>
+                </div>
+            </div>
+        
+            <!-- TotalFootballAnalysis -->
+            <div class="site-card" onclick="navigateTo('totalfootballanalysis.html')">
+                <div class="site-content">
+                    <h2 class="site-title">TotalFootballAnalysis</h2>
+                    <p class="site-description">전술 분석과 스카우팅 정보를 제공</p>
+                </div>
+            </div>
+        
+            <!-- Transfermarkt -->
+            <div class="site-card" onclick="navigateTo('transfermarkt.html')">
+                <div class="site-content">
+                    <h2 class="site-title">Transfermarkt</h2>
+                    <p class="site-description">선수들의 이적 정보 제공</p>
+                </div>
+            </div>
+        
+            <!-- FootballUser -->
+            <div class="site-card" onclick="navigateTo('footballuser.html')">
+                <div class="site-content">
+                    <h2 class="site-title">FootballUser</h2>
+                    <p class="site-description">나만의 포메이션 작성 가능</p>
+                </div>
+            </div>
+        
+            <!-- PhysioRoom -->
+            <div class="site-card" onclick="navigateTo('physioroom.html')">
+                <div class="site-content">
+                    <h2 class="site-title">PhysioRoom</h2>
+                    <p class="site-description">선수들의 부상 현황 제공</p>
+                </div>
+            </div>
+        
+            <!-- SportingLife -->
+            <div class="site-card" onclick="navigateTo('sportinglife.html')">
+                <div class="site-content">
+                    <h2 class="site-title">SportingLife</h2>
+                    <p class="site-description">최신 축구 기사와 정보 제공</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

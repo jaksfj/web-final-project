@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>라리가 (스페인 리그)</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+
+        <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #000, #1a1a1a); /* 그라데이션 배경 */
+            color: white;
+            padding-top: 120px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 50px;
+            font-family: "Monoton", sans-serif;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* 텍스트 그림자 */
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-Orange {
+            color: #fe9308; /* 진한 보라색 */
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        .main-text .light-Orange {
+            color: #dda25e; /* 연한 보라색 */
+            font-style: italic; 
+            font-weight:bold;
+        }
+
+        .logo-picture {
+            display: block; /* 이미지 블록화 */
+            margin: 0 auto; /* 중앙 정렬 */
+            max-width: 50%; /* 이미지가 부모 너비를 넘지 않도록 제한 */
+            height: auto; /* 이미지 비율 유지 */
+            margin-bottom: 30px; /* 텍스트와 간격 추가 */
+        }
+
+        .p-text{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            align-items: center;
+            margin-left:50%;
+        }
+
+        /* 텍스트 컨테이너 스타일 */
+        .text-container {
+            margin: 30px auto; /* 이미지와 텍스트 간격 */
+            text-align: center;
+            max-width: 1000px; /* 컨테이너 너비 제한 */
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05); /* 약간의 투명 배경 */
+            border-radius: 10px; /* 둥근 테두리 */
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+            color: white;
+        }
+
+        /* 설명 텍스트 스타일 */
+        .description {
+            font-size: 1.2rem; /* 본문 폰트 크기 */
+            line-height: 1.8; /* 줄 간격 */
+            color: #f0f0f0;
+        }
+
+        /* 섹션 스타일 */
+        .section {
+            max-width: 960px; /* 모든 섹션의 최대 너비 동일하게 설정 */
+            margin: 0 auto; /* 중앙 정렬 */
+            padding: 20px; /* 섹션 내부 여백 */
+            background: transparent; /* 배경색 없애기 */
+        }
+
+        .section h2 {
+            font-family: "Luckiest Guy", sans-serif;
+            font-size: 30px;
+            color: #5cce7c;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <!-- 홈 아이콘 -->
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-Orange">LA</span> <span
+                class="light-Orange">LIGA</span>
+        </div>
+        <img src="pictures/la_liga_big2.svg" class="logo-picture" alt="라리가 로고">
+        <div class="text-container">
+            <p class="description">
+                <div class="section">
+                    <h2>Introduce</h2>
+                    <br>
+                    라리가(La Liga)는 스페인의 프로 축구 1부 리그로, 공식 명칭은 라리가 EA 스포츠(La Liga
+                    EA Sports)이다.
+                    <br>
+                    <br>
+                    세계 최고의 축구 리그 중 하나로 평가받으며, 많은 축구 팬들에게 사랑받는 리그이다.
+                    <br>
+                    <br>
+                    UEFA 챔피언스 리그, UEFA 유로파 리그, UEFA 슈퍼컵, FIFA 클럽 월드컵 최다 우승 리그이며,
+                    23회로 UEFA 계수 랭킹 최다 1위 리그이다.
+                    <br>
+                    <br>
+                    한때 유럽 리그 순위 1위를 지켰으며, 2000년대와 2010년대 동안 라리가 클럽들이 UEFA 대회에서
+                    많은 우승을 거두었다.
+                    <br>
+                    <br>
+                    라리가에 입문할 떄는 레알마드리드와 바르셀로나가 겨루는 엘클라시코 경기를 시청하게되면서 많이 입문하게 된다.
+                    <br>
+                    <br>
+                    또한 세비야, 레알 소시에다드와 같은 전통이 깊고, 열성적인 팬 문화가 존재하는 팀을 응원해보는 것도 입문에
+                    도움이 된다
+                </div>
+                <div class="section">
+                    <h2>Feature</h2>
+                    <br>
+                    라리가는 기술적이고 창의적인 축구로 유명하며, 세계 최고의 테크니션들이 활약하는 리그이다.
+                    <br>
+                    <br>
+                    특히, 패스와 드리블 중심의 탈압박 기술이 전술의 핵심이 된다.
+                    <br>
+                    <br>
+                    총 20개 팀이 참가하고 각 팀은 홈과 원정에서 다른 모든 팀과 한 번씩 경기를 치르며, 이에 따라 한 팀당
+                    38경기를 소화하게 된다.
+                    <br>
+                    따라서 총 380경기가 진행된다.
+                    <br>
+                    <br>
+                    <br>
+                </div>
+                <div class="section">
+                    <h2>Korean Players</h2>
+                    <br>
+                    김민수: 2024년 10월 지로나 FC에서 라리가 데뷔전을 치렀으며, 한국인으로서는 8번째로 라리가 무대를
+                    밟은 선수이다.
+                </div>
+                <div class="section">
+                    <h2>More Information</h2>
+                    <button class="info-button"
+                    onclick="window.open('https://namu.wiki/w/%EB%9D%BC%EB%A6%AC%EA%B0%80')">
+                    더 알아보기
+                    </button>
+                </div>
+            </p>
+        </div>
+    </body>
+</html>

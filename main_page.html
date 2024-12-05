@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minjae와 함께 킥오프</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Minjae와 함께 킥오프</title>
 
-    <!-- 구글 폰트 링크 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
 
-    <style>
+        <style>
         /* 기본 여백과 패딩 초기화 */
         * {
             margin: 0;
@@ -193,7 +194,7 @@
             margin-right: 15px;    
         }
     </style>
-    <script>
+        <script>
         function setClock() {
             const now = new Date();
             const seconds = now.getSeconds();
@@ -384,7 +385,7 @@
         return false; // 기본 동작 방지
     }
 
-    // 키보드 엔터 감지
+    // 키보드 엔터 감지됐는지 확인
     document.getElementById("search-keyword").addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
             // 엔터 키를 누르면 폼 제출
@@ -393,53 +394,57 @@
         }
     });
     </script>
-</head>
-<body>
-    <!-- 네비게이션 바 -->
-    <div class="navbar">
-        <div class="navbar-left">
-            <a href="#leagues" onclick="window.location.href = 'leagues.html'">리그</a>
-            <a href="#teams" onclick="window.location.href = 'teams.html'">팀</a>
-            <a href="#players" onclick="window.location.href = 'players.html'">선수</a>
-            <a href="#matches" onclick="window.location.href = 'matches.html'">경기</a>
-            <a href="#communities" onclick="window.location.href = 'communites_sites.html'">커뮤니티 & 사이트</a>
-        </div>
-        <div class="navbar-right">
-            <!-- 검색 아이콘 -->
-            <img src="pictures/search_icon3.png" class="search-icon" alt="검색 아이콘" onclick="toggleSearch()">
-            
-            <!-- 아날로그 시계 -->
-            <div class="clock">
-                <div class="hand hour"></div>
-                <div class="hand minute"></div>
-                <div class="hand second"></div>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a onclick="window.location.href = 'leagues.html'">리그</a>
+                <a onclick="window.location.href = 'teams.html'">팀</a>
+                <a onclick="window.location.href = 'players.html'">선수</a>
+                <a onclick="window.location.href = 'matches.html'">경기</a>
+                <a onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
             </div>
-        
-            
-            <!-- 숨겨진 검색 폼 -->
-            <form id="search-form" onsubmit="return searchFunction(event);">
-                <span id="search-close" onclick="toggleSearch()">✕</span> <!-- 닫기 버튼 -->
-                <select id="search-category">
-                    <option value="">대분류를 선택하세요</option>
-                    <option value="leagues">리그</option>
-                    <option value="teams">팀</option>
-                    <option value="players">선수</option>
-                    <option value="matches">경기</option>
-                    <option value="communities">커뮤니티 & 사이트</option>
-                </select>
-                <select id="search-keyword">
-                    <option value="">대분류를 먼저 선택하세요</option>
-                </select>
-            </form>
+            <div class="navbar-right">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <!-- 메인 텍스트 -->
-    <div class="main-text">
-        <span class="strong-green">kick off with</span> <span class="light-green">Minjae</span>
-    </div>
+        <!-- 메인 텍스트 -->
+        <div class="main-text">
+            <span class="strong-green">kick off with</span> <span
+                class="light-green">Minjae</span>
+        </div>
 
-    <div class="quote" id="quote-text">사람들이 왜 축구를 보러 가는지 아는가? 누가 이길지 모르기 때문이다.</div>
-    <div class="author" id="quote-author">제프 헤어베어거</div> 
-</body>
+        <div class="quote" id="quote-text">사람들이 왜 축구를 보러 가는지 아는가? 누가 이길지 모르기
+            때문이다.</div>
+        <div class="author" id="quote-author">제프 헤어베어거</div>
+    </body>
 </html>

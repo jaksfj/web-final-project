@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2022 카타르 월드컵 결승전</title>
+    <!-- 구글 폰트 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+    <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Black Han Sans", serif;
+            font-weight: 400;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-white {
+            color: white;
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 동영상 컨테이너 */
+        .video-container {
+            margin: 20px auto;
+            max-width: 720px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        iframe, video {
+            width: 100%;
+            height: 400px;
+        }
+
+        /* 링크 버튼 */
+        .link-container {
+            margin: 20px 45%;
+            width: 200px;
+            height:40px;
+        }
+
+        .highlight-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: rgb(196, 255, 107);
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+            background-color: #75d645;
+        }
+
+        /* 설명 섹션 */
+        .description-container {
+            margin-top: 100px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+            text-align: left;
+            max-width: 1000px;
+            margin: 0 auto 30px auto; /* 상단, 하단 여백 */
+            padding: 0 100px; /* 왼쪽 오른쪽 여백 */
+            margin-bottom: 50px;
+            margin-left:12%;
+            line-height: 1.8;
+        }
+
+        .description-container h2 {
+            margin-top:20px;
+            font-family: "Monoton", sans-serif;
+            font-size: 24px;
+            color: #c4ffc4;
+            margin-bottom: 20px;
+        }
+
+        .description-container p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom:10px;
+        }
+    </style>
+    <script src="main.js"></script>
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="#leagues" onclick="window.location.href = 'leagues.html'">리그</a>
+            <a href="#teams" onclick="window.location.href = 'teams.html'">팀</a>
+            <a href="#players" onclick="window.location.href = 'players.html'">선수</a>
+            <a href="#matches" onclick="window.location.href = 'matches.html'">경기</a>
+            <a href="#communities" onclick="window.location.href = 'communites_sites.html'">커뮤니티 & 사이트</a>
+        </div>
+        <div class="navbar-right">
+            <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+            <!-- 검색 아이콘 -->
+            <img src="pictures/search_icon3.png" class="search-icon" alt="검색 아이콘" onclick="toggleSearch()">
+            
+            <!-- 아날로그 시계 -->
+            <div class="clock">
+                <div class="hand hour"></div>
+                <div class="hand minute"></div>
+                <div class="hand second"></div>
+            </div>
+        
+            
+            <!-- 숨겨진 검색 폼 -->
+            <form id="search-form" onsubmit="return searchFunction(event);">
+                <span id="search-close" onclick="toggleSearch()">✕</span> <!-- 닫기 버튼 -->
+                <select id="search-category">
+                    <option value="">대분류를 선택하세요</option>
+                    <option value="leagues">리그</option>
+                    <option value="teams">팀</option>
+                    <option value="players">선수</option>
+                    <option value="matches">경기</option>
+                    <option value="communities">커뮤니티 & 사이트</option>
+                </select>
+                <select id="search-keyword">
+                    <option value="">대분류를 먼저 선택하세요</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <div class="main-text">
+        <span class="strong-white">에밀리아노 마르티네즈의 슈퍼세이브</span>
+    </div>
+
+     <!-- 동영상 섹션 -->
+     <div class="video-container">
+        <video controls="" src="videos/emiliano_worldcup.mp4" title="에밀리아노 마르티네즈 하이라이트">
+        </video>
+    </div>
+
+    <!-- 링크 섹션 -->
+    <div class="link-container">
+        <a href="https://www.youtube.com/watch?v=3-BZxvKT6x4" class="highlight-link">
+            전체 영상보기
+        </a>
+    </div>
+
+    <!-- 설명 섹션 -->
+<div class="description-container">
+    <h2>하이라이트 상황 설명</h2>
+    <p>
+        2022 카타르 월드컵 결승전, 아르헨티나와 프랑스의 경기에서 연장전 종료 직전 에밀리아노 마르티네즈는 결정적인 세이브를 선보였다. <br>
+        프랑스의 콜로 무아니가 골문 앞에서 강력한 슛을 시도했지만, 마르티네즈는 환상적인 반응 속도로 이를 막아냈다. <br>
+        이 세이브는 승부차기로 이어지며 아르헨티나가 월드컵 우승을 차지할 수 있는 발판이 되었다.
+    </p>
+    <h2>이 장면을 뽑은 이유</h2>
+    <p>
+        이 장면은 한 골이 경기의 승패를 좌우하는 순간에서 골키퍼가 얼마나 중요한 역할을 하는지를 보여주었다. <br>
+        마르티네즈의 세이브는 단순한 반응 속도만이 아니라 압박 속에서도 침착함을 잃지 않는 그의 정신력을 보여주었다. <br>
+        이 장면은 월드컵 역사상 가장 중요한 순간 중 하나로 꼽히며, 개인의 기량이 팀 전체를 구할 수 있다는 메시지를 준다. <br>
+        이 장면을 볼 때마다 경기에서 승리를 향한 열정과 투지가 팀을 살릴 수 있다는 것을 다시 한번 느끼게 해주었다.
+    </p>
+</div>
+</body>
+</html>

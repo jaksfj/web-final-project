@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>루턴타운</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+
+        <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-orange {
+            color: #ff7627; /* 진한 초록색 */
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        .main-text .light-orange {
+            color: #ffaa6d; /* 진한 초록색 */
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            cursor: pointer;
+            width: 42px; 
+            height: 42px; 
+            margin-right: 15px; /* 검색 아이콘과의 간격 */
+        }
+
+        .main-logo {
+            text-align: center;
+            margin-bottom: 50px;
+            background-color: rgb(255, 150, 45);
+        }
+
+        .main-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-section h2 {
+            font-family: "Monoton", sans-serif;
+            font-size: 24px;
+            color: #c4ffc4;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .content-section strong {
+            color: #ffffff;
+        }
+
+        .divider {
+            height: 2px;
+            background: #c4ffc4;
+            margin: 40px 0;
+        }
+
+        p {
+            line-height: 1.8; /* 줄 간 간격을 1.8배로 설정 */
+        }
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-orange">Luton</span> <span
+                class="light-orange">Town</span>
+        </div>
+
+        <!-- 토트넘 로고 -->
+        <div class="main-logo">
+            <img src="pictures/lutonTown_logo.png" alt="루턴타운 로고">
+        </div>
+
+        <!-- 소개 섹션 -->
+        <div class="content-section">
+            <h2>1. Team Theme song</h2>
+            <!-- 오디오 플레이어 추가 -->
+            <audio src="audio/luton_song.mp3" controls>
+                브라우저가 오디오 태그를 지원하지 않습니다.
+            </audio>
+
+            <div class="divider"></div>
+
+            <h2>2. Team's Info</h2>
+    <p>
+        루턴 타운 FC는 "끈기와 열정"으로 유명한 팀이다. <br>
+        이 팀은 <strong>"The Hatters"</strong>라는 별명으로 불리며, 모자 제조업으로 유명했던 지역에서 유래했다. <br>
+        1885년에 설립된 잉글랜드 축구 클럽으로, 홈구장은 <strong>케닐워스 로드</strong>이다. <br>
+        루턴 타운은 작지만 강한 팀으로, 팬들에게 깊은 사랑을 받고 있다.
+    </p>
+
+    <div class="divider"></div>
+
+    <h2>3. 이 팀을 내가 좋아하게 된 이유</h2>
+    <p>
+        루턴 타운은 22/23 시즌 프리미어리그로 승격하여 꾸준한 열정을 나에게 보여주었다. <br>
+        특히, 작은 예산과 자원으로도 프리미어리그에 진출한 그들의 이야기는 나에게 많은 영감을 주었다. <br>
+        그리고 강팀을 상대할 때도 전혀 겁먹지 않고 맞서 싸워 좋은 경기력을 보여주는 팀이기에 더욱더 호감이 갔다. <br>
+        이러한 팀의 끈기와 독특한 팀 컬러는 나에게 강한 인상을 남겼다.
+    </p>
+
+    <div class="divider"></div>
+
+    <h2>More&nbsp;&nbsp;&nbsp;Information</h2>
+    <button class="info-button" 
+        onclick="window.open('https://namu.wiki/w/%EB%A3%A8%ED%84%B4%20%ED%83%80%EC%9A%B4%20FC', '_blank')">
+        더 알아보기
+    </button>
+    </body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>리그앙 (프랑스 리그)</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+        <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #000, #1a1a1a); /* 그라데이션 배경 */
+            color: white;
+            padding-top: 120px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 50px;
+            font-family: "Monoton", sans-serif;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* 텍스트 그림자 */
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-blue {
+            color: #3518f4;
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        .main-text .light-blue {
+            color: #5b58ea;
+            font-style: italic; 
+            font-weight:bold;
+        }
+
+        .logo-picture {
+            display: block; /* 이미지 블록화 */
+            margin: 0 auto; /* 중앙 정렬 */
+            max-width: 50%; /* 이미지가 부모 너비를 넘지 않도록 제한 */
+            height: auto; /* 이미지 비율 유지 */
+            margin-bottom: 30px; /* 텍스트와 간격 추가 */
+        }
+
+        .p-text{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            align-items: center;
+            margin-left:50%;
+        }
+
+        /* 텍스트 컨테이너 스타일 */
+        .text-container {
+            margin: 30px auto; /* 이미지와 텍스트 간격 */
+            text-align: center;
+            max-width: 1000px; /* 컨테이너 너비 제한 */
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05); /* 약간의 투명 배경 */
+            border-radius: 10px; /* 둥근 테두리 */
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+            color: white;
+        }
+
+        /* 설명 텍스트 스타일 */
+        .description {
+            font-size: 1.2rem; /* 본문 폰트 크기 */
+            line-height: 1.8; /* 줄 간격 */
+            color: #f0f0f0;
+        }
+
+        /* 섹션 스타일 */
+        .section {
+            max-width: 960px; /* 모든 섹션의 최대 너비 동일하게 설정 */
+            margin: 0 auto; /* 중앙 정렬 */
+            padding: 20px; /* 섹션 내부 여백 */
+            background: transparent; /* 배경색 없애기 */
+        }
+
+        .section h1 {
+            font-family: "Luckiest Guy", sans-serif;
+            font-size: 30px;
+            color: #5cce7c;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <!-- 홈 아이콘 -->
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-blue">LIGUE</span> <span
+                class="light-blue">1</span>
+        </div>
+        <img src="pictures/ligue1_big.svg" class="logo-picture" alt="분데스리가 로고">
+        <div class="text-container">
+            <p class="description">
+                <div class="section">
+                    <h1>Introduce</h1>
+                    <br>
+                    리그앙은 프랑스의 최상위 축구 리그로, 1932년에 설립된 유럽 축구의 대표적인 리그 중 하나이다.
+                    <br>
+                    <br>
+                    전통적으로 파리 생제르맹(PSG), 올림피크 리옹, 마르세유 등이 강팀으로 꼽힌다.
+                    <br>
+                    <br>
+                    젊은 선수들의 발전에 초점을 맞춘 리그로, 세계적인 스타들이 성장하는 발판이 되어왔다.
+                    <br>
+                    <br>
+                    기술적인 축구와 화려한 공격력을 자랑하며, 유럽 대항전에서도 경쟁력을 보인다.
+                    <br>
+                    <br>
+                    리그앙은 세계 축구 팬들 사이에서 "스타들의 출발점"으로도 불리며, 재능 있는 선수들이 유럽 빅리그로
+                    진출하는 창구 역할을 한다.
+                </div>
+                <div class="section">
+                    <h1>Feature</h1>
+                    <br>
+                    리그앙은 기술 중심의 축구와 빠른 경기 전개로 유명하다.
+                    <br>
+                    <br>
+                    젊은 선수들이 많은 리그로, 새로운 유망주를 발굴하는 재미가 있다.
+                    <br>
+                    <br>
+                    전통적인 빅매치로는 파리 생제르맹 vs 마르세유 (르 클라시크, Le Classique)가 있다. 이 경기는
+                    리그앙 입문자에게 가장 추천되는 경기이다.
+                    <br>
+                    <br>
+                    리그앙은 유럽 주요 리그 중에서도 공격력과 역동성이 강점으로 꼽힌다.
+                    <br>
+                    <br>
+                    리그앙의 클럽들이 유소년 아카데미에 많은 투자를 하고 있어, 매 시즌 새로운 스타가 등장하는 리그이다.
+                    <br>
+                    <br>
+                    <br>
+                </div>
+                <div class="section">
+                    <h1>Korean Players</h1>
+                    <br>
+                    이강인: 현재 파리 생제르맹(PSG)에서 공격형 미드필더로 활약하며, 팀의 중요한 자원으로 자리 잡고 있다.
+                </div>
+                <div class="section">
+                    <h1>More Information</h1>
+                    <button class="info-button"
+                    onclick="window.open('https://namu.wiki/w/%EB%A6%AC%EA%B7%B8%201?from=%EB%A6%AC%EA%B7%B8%EC%95%99')">
+                    더 알아보기
+                    </button>
+                </div>
+            </p>
+        </div>
+    </body>
+</html>

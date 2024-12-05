@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에레디비시 (네덜란드 리그)</title>
+    <!-- 구글 폰트 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+    <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #000, #1a1a1a); /* 그라데이션 배경 */
+            color: white;
+            padding-top: 120px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 50px;
+            font-family: "Monoton", sans-serif;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* 텍스트 그림자 */
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-blue {
+            color: #3518f4;
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        .main-text .light-blue {
+            color: #5b58ea;
+            font-style: italic; 
+            font-weight:bold;
+        }
+
+        .logo-picture {
+            display: block; /* 이미지 블록화 */
+            margin: 0 auto; /* 중앙 정렬 */
+            max-width: 50%; /* 이미지가 부모 너비를 넘지 않도록 제한 */
+            height: auto; /* 이미지 비율 유지 */
+            margin-bottom: 30px; /* 텍스트와 간격 추가 */
+        }
+
+        .p-text{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            align-items: center;
+            margin-left:50%;
+        }
+
+        /* 텍스트 컨테이너 스타일 */
+        .text-container {
+            margin: 30px auto; /* 이미지와 텍스트 간격 */
+            text-align: center;
+            max-width: 1000px; /* 컨테이너 너비 제한 */
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05); /* 약간의 투명 배경 */
+            border-radius: 10px; /* 둥근 테두리 */
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+            color: white;
+        }
+
+        /* 설명 텍스트 스타일 */
+        .description {
+            font-size: 1.2rem; /* 본문 폰트 크기 */
+            line-height: 1.8; /* 줄 간격 */
+            color: #f0f0f0;
+        }
+
+        /* 섹션 스타일 */
+        .section {
+            max-width: 960px; /* 모든 섹션의 최대 너비 동일하게 설정 */
+            margin: 0 auto; /* 중앙 정렬 */
+            padding: 20px; /* 섹션 내부 여백 */
+            background: transparent; /* 배경색 없애기 */
+        }
+
+        .section h1 {
+            font-family: "Luckiest Guy", sans-serif;
+            font-size: 30px;
+            color: #5cce7c;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+    </style>
+    <script src="main.js"></script>
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="#leagues" onclick="window.location.href = 'leagues.html'">리그</a>
+            <a href="#teams" onclick="window.location.href = 'teams.html'">팀</a>
+            <a href="#players" onclick="window.location.href = 'players.html'">선수</a>
+            <a href="#matches" onclick="window.location.href = 'matches.html'">경기</a>
+            <a href="#communities" onclick="window.location.href = 'communites_sites.html'">커뮤니티 & 사이트</a>
+        </div>
+        <div class="navbar-right">
+            <!-- 홈 아이콘 -->
+            <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘" onclick="window.location.href = 'main_page.html'">
+            <!-- 검색 아이콘 -->
+            <img src="pictures/search_icon3.png" class="search-icon" alt="검색 아이콘" onclick="toggleSearch()">
+            
+            <!-- 아날로그 시계 -->
+            <div class="clock">
+                <div class="hand hour"></div>
+                <div class="hand minute"></div>
+                <div class="hand second"></div>
+            </div>
+        
+            
+            <!-- 숨겨진 검색 폼 -->
+            <form id="search-form" onsubmit="return searchFunction(event);">
+                <span id="search-close" onclick="toggleSearch()">✕</span> <!-- 닫기 버튼 -->
+                <select id="search-category">
+                    <option value="">대분류를 선택하세요</option>
+                    <option value="leagues">리그</option>
+                    <option value="teams">팀</option>
+                    <option value="players">선수</option>
+                    <option value="matches">경기</option>
+                    <option value="communities">커뮤니티 & 사이트</option>
+                </select>
+                <select id="search-keyword">
+                    <option value="">대분류를 먼저 선택하세요</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <div class="main-text">
+        <span class="strong-blue">Eredivisie</span></span>
+    </div>
+    <img src="pictures/eredivisie_big2.jpg" class="logo-picture" alt="에레디비시 로고">
+    <div class="text-container">
+        <p class="description">
+            <div class="section">
+            <h1>Introduce</h1>
+            <br>
+            에레디비시는 네덜란드의 최상위 축구 리그로, 1956년에 설립되었다.
+            <br>
+            <br>
+            리그는 18개 팀으로 구성되며, 시즌 종료 시 최하위 팀은 2부 리그로 강등된다.
+            <br>
+            <br>    
+            아약스, PSV 에인트호번, 페예노르트 등 유럽 축구 역사에서 중요한 클럽들이 소속되어 있다.
+            <br>
+            <br>
+            에레디비시는 젊은 선수들의 성장과 발전을 중시하는 리그로, 유럽 주요 리그로 가는 발판 역할을 한다.
+            <br>
+            <br>
+            공격적인 축구 스타일과 창의적인 플레이로 축구 팬들에게 사랑받는 리그이다.
+            </div>
+            <div class="section">
+            <h1>Feature</h1>
+            <br>
+            에레디비시는 토탈 풋볼 철학을 기반으로 한 전술적 유연성과 창의적인 플레이가 특징이다.
+            <br>
+            <br>
+            젊은 선수들의 발굴과 육성에 중점을 두며, 많은 유망주들이 이 리그를 통해 성장한다.
+            <br>
+            <br>
+            강팀들인 아약스, 페예노르트, PSV 에인트호번 간의 경쟁은 리그의 주요 볼거리로, 특히 아약스 vs 페예노르트 경기는 입문자들에게 추천되는 매치이다.
+            <br>
+            <br>
+            리그는 빠른 경기 템포와 공격적인 전술로 축구 팬들에게 흥미로운 경기를 선사한다.
+            <br>
+            <br>
+            네덜란드 특유의 축구 문화와 유소년 시스템 덕분에 매년 새로운 스타들이 등장한다.
+            </div>
+            <div class="section">
+            <h1>활약하는 한국 선수들</h1>
+            <br>
+            황인범: 현재 페예노르트(Feyenoord)에서 중앙 미드필더로 활약하며, 팀의 핵심 자원으로 자리 잡고 있다.
+            </div>
+            <div class="section">
+                <h1>More Information</h1>
+                <button class="info-button"
+                onclick="window.open('https://namu.wiki/w/%EC%97%90%EB%A0%88%EB%94%94%EB%B9%84%EC%8B%9C')">
+                더 알아보기
+                </button>
+            </div>
+        </p>
+    </div>
+</body>
+</html>

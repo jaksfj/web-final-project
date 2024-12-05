@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>토트넘</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+
+        <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-white {
+            color: #ffffff; /* 진한 초록색 */
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            cursor: pointer;
+            width: 42px; 
+            height: 42px; 
+            margin-right: 15px; /* 검색 아이콘과의 간격 */
+        }
+
+        .main-logo {
+            text-align: center;
+            margin-bottom: 50px;
+            background-color:white;
+        }
+
+        .main-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-section h2 {
+            font-family: "Monoton", sans-serif;
+            font-size: 24px;
+            color: #c4ffc4;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .content-section strong {
+            color: #ffffff;
+        }
+
+        .divider {
+            height: 2px;
+            background: #c4ffc4;
+            margin: 40px 0;
+        }
+
+        p {
+            line-height: 1.8; /* 줄 간 간격을 1.8배로 설정 */
+        }
+
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-white">Tottenham</span> <span
+                class="strong-white">hotspur</span>
+        </div>
+
+        <!-- 토트넘 로고 -->
+        <div class="main-logo">
+            <img src="pictures/tottenham3_logo.png" alt="토트넘 로고">
+        </div>
+
+        <!-- 소개 섹션 -->
+        <div class="content-section">
+            <h2>1. Team Theme song</h2>
+            <!-- 오디오 플레이어 추가 -->
+            <audio src="audio/tottenham_song.mp3" controls>
+                브라우저가 오디오 태그를 지원하지 않습니다.
+            </audio>
+
+            <div class="divider"></div>
+
+            <h2>2. Team's Info</h2>
+            <p>
+                토트넘 핫스퍼 FC는 "용기와 도전 정신"을 상징하는 팀이다. <br>
+                그들의 구호인 <strong>"To Dare is to Do"</strong>는 팀의 정체성과 철학을 잘
+                보여준다.<br>
+                토트넘 핫스퍼 FC는 1882년에 설립된 잉글랜드 프리미어리그 소속 축구 클럽으로,
+                홈구장은 <strong>토트넘 핫스퍼 스타디움</strong>이다. <br>
+                런던 북부를 연고로 하며, 역사적인 FA컵과 유럽 대회에서의 성공으로 명성을 쌓아왔다.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>3. 이 팀을 내가 좋아하게 된 이유</h2>
+            <p>
+                토트넘은 열정적이고 공격적인 경기 스타일로 눈길을 끌었다. <br>
+                또한 감독이 바뀔 때 마다 팀의 색깔이 항상 완전히 뒤바뀌어 다양성에 호감이 가는 팀이었다. <br>
+                특히, 손흥민 선수의 활약과 팀의 독창적인 플레이가 나에게 큰 매력으로 다가왔다.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>4. 현재 팀에서 활약하고 있거나 활약했던 우리나라 선수</h2>
+            <p>
+                <strong>손흥민</strong> 선수는 토트넘의 주장이자 핵심 선수로,
+                한국 축구 역사상 가장 성공적인 해외 선수 중 한 명으로 평가받고 있다.
+                그의 다재다능한 능력과 겸손한 인성은 전 세계 팬들의 사랑을 받고 있다.
+                <br>
+                <br>
+                <strong>양민혁</strong> 선수는 아직 토트넘 선수는 아니지만 25년 1월부터 토트넘 선수 소속이 된다.
+                <br> k리그에서 18세란 나이로 우측 윙어 자리에서 뛰어난 실력을 뽐내어 토트넘의 눈에 들어오게 되었다.
+                <br> 과연 미래의 손흥민의 자리를 대신하게 될지 기대가 되고 있다. <br>
+                <br>
+                <strong>이영표</strong> 선수는 좌측 풀백 자리에서 2005년~2008년인 3년동안 활약했다.
+                <br>토트넘에서 3시즌 동안 뛰며 93경기에 출전, 수비와 공격 가담에서 모두 훌륭한 활약을 펼쳤다.
+            </p>
+
+            <div class="divider"></div>
+
+        <h2>More&nbsp;&nbsp;&nbsp;Information</h2>
+            <button class="info-button" onclick="window.open('https://namu.wiki/w/%ED%86%A0%ED%8A%B8%EB%84%98%20%ED%99%8B%EC%8A%A4%ED%8D%BC%20FC?from=%ED%86%A0%ED%8A%B8%EB%84%98%20%ED%95%AB%EC%8A%A4%ED%8D%BC')">
+            더 알아보기
+            </button>
+        </div>
+    </body>
+</html>

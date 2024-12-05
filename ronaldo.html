@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>호나우두</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+        <style>
+       /* 기본 여백과 패딩 초기화 */
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 40px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-white {
+            color: #ffffff;
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 상단 섹션 스타일 */
+        .top-section {
+            display: flex;
+            align-items: flex-start; /* 글 위쪽부터 정렬 */
+            margin-top: 20px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .top-section img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border: 5px solid #5aba30;
+            border-radius: 10px;
+            margin-left:8%;
+            background-color: rgb(221, 221, 221);
+            margin-right: 20px;
+        }
+
+        .player-info {
+            flex: 1;
+            font-size: 18px;
+            gap: 10px;
+        }
+
+        .section-title {
+            font-size: 25px;
+            margin: 20px 0 10px;
+            font-family: "Luckiest Guy", serif;
+            color: #c1ff72;
+        }
+
+        /* 수상 경력 및 기타 섹션 */
+        .awards,
+        .reasons {
+            margin: 0 auto 30px auto; /* 상단, 하단 여백 */
+            padding: 0 100px; /* 왼쪽 오른쪽 여백 */
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .reasons p {
+            margin-top: 10px;
+        }
+
+        .awards ul {
+            display: flex; /* 플렉스 박스 사용 */
+            flex-wrap: wrap; /* 줄 바꿈 허용 */
+            gap: 10px; /* 항목 간격 추가 */
+            padding: 0;
+            list-style: none; /* 리스트 점 제거 */
+        }
+
+        .awards li {
+            width: 45%; /* 각 항목의 너비 */
+        }
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span
+                class="strong-green">Ronaldo</span>
+        </div>
+
+        <!-- 상단 섹션 -->
+        <div class="top-section">
+            <!-- 호나우두 사진 -->
+            <img src="pictures/ronaldo.webp" alt="호나우두 사진">
+
+            <!-- 선수 정보 -->
+            <div class="player-info">
+                <p>호나우두는 브라질 축구 역사상 가장 위대한 스트라이커 중 한 명으로 평가받으며, "현대 축구의 전설"로
+                    불린다.<br>
+                    그는 폭발적인 스피드, 강력한 득점력, 그리고 화려한 드리블 기술로 축구 팬들을 매료시켰다.<br>
+                    호나우두는 크루제이루에서 프로 데뷔를 한 뒤, 네덜란드의 PSV 에인트호번, 바르셀로나, 인터 밀란, 레알
+                    마드리드,<br>
+                    AC 밀란, 그리고 코린치아스 등 유럽과 브라질의 명문 클럽에서 활약하며 많은 트로피를 들어 올렸다.<br>
+                    그는 1994년 FIFA 월드컵에 처음 참가한 후, 1998년과 2002년 월드컵에서도 브라질 대표팀의
+                    핵심으로 활약하며<br> 두 번의 월드컵 우승을 경험했다.<br>
+                    특히, 2002년 월드컵 결승전에서는 두 골을 기록하며 브라질의 우승을 이끌었다.<br>
+                    호나우두는 두 번의 발롱도르와 세 번의 FIFA 올해의 선수상을 수상하며 세계 최고의 선수로 자리
+                    잡았다.<br>
+                    그는 축구 외적으로도 브라질의 자랑스러운 아이콘으로, 부상과 역경을 극복한 불굴의 정신으로 많은 이들에게
+                    영감을 주었다.<br>
+                    호나우두는 단순히 스트라이커를 넘어, 축구의 예술성과 아름다움을 대변하는 전설적인 선수로 기억된다.
+                </p>
+            </div>
+        </div>
+
+        <!-- 수상 경력 섹션 -->
+        <div class="awards">
+            <div class="section-title">Awards</div>
+            <ul>
+                <li>FIFA 월드컵 우승 2회 (1994, 2002)</li>
+                <li>FIFA 월드컵 골든볼 수상 (1998)</li>
+                <li>FIFA 월드컵 골든슈 수상 (2002)</li>
+                <li>발롱도르 2회 수상 (1997, 2002)</li>
+                <li>FIFA 올해의 선수상 3회 수상 (1996, 1997, 2002)</li>
+                <li>코파 아메리카 우승 2회 (1997, 1999)</li>
+                <li>UEFA 컵 우승 (1998, 인터 밀란)</li>
+                <li>스페인 라리가 우승 1회 (레알 마드리드)</li>
+                <li>스페인 슈퍼컵 우승 1회</li>
+                <li>FIFA/FIFPro 월드 XI 선정</li>
+            </ul>
+        </div>
+
+        <!-- 내가 좋아하는 이유 섹션 -->
+        <div class="reasons">
+            <div class="section-title">Why I like this Player</div>
+            <p>호나우두 선수는 축구 역사상 가장 아름다운 공격 축구를 보여준 선수로, 그의 경기를 보면 감탄이 절로 나온다.<br>
+                그는 놀라운 스피드와 유연한 드리블, 그리고 치명적인 골 결정력으로 상대 수비진을 압도했다.<br>
+                특히, 2002년 FIFA 월드컵에서 보여준 그의 활약은 축구 팬들에게 잊을 수 없는 순간을 선사했다.<br>
+                호나우두는 단순히 기술적으로 뛰어난 것을 넘어, 부상과 역경을 극복하며 계속해서 세계 정상에 서는 모습을
+                보여주었다.<br>
+                그의 커리어는 노력과 재능, 그리고 정신력의 결합이 얼마나 중요한지를 증명한다.<br>
+                나는 호나우두 선수의 경기를 통해 축구의 아름다움을 느꼈으며, 공격수로서의 역할에 대한 이해를 넓힐 수
+                있었다.<br>
+                그는 경기장에서의 퍼포먼스뿐만 아니라, 팬들과의 교감과 스포츠 외교를 통해 축구의 대중화에 크게 기여했다.<br>
+                호나우두는 단순한 전설이 아니라, 축구의 본질을 대변하는 선수이며, 나에게도 큰 영감을 주는 아이콘이다.
+            </p>
+        </div>
+        <div class="reasons">
+            <div class="section-title">More Information</div>
+            <button class="info-button" onclick="window.open('https://namu.wiki/w/%ED%98%B8%EB%82%98%EC%9A%B0%EB%91%90')">
+                더 알아보기
+                </button>
+        </div>
+    </body>
+</html>

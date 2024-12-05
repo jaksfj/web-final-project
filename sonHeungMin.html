@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>손흥민</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+        <style>
+       /* 기본 여백과 패딩 초기화 */
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 40px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-white {
+            color: #ffffff;
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 상단 섹션 스타일 */
+        .top-section {
+            display: flex;
+            align-items: flex-start; /* 글 위쪽부터 정렬 */
+            margin-top: 20px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .top-section img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border: 5px solid #5aba30;
+            border-radius: 10px;
+            margin-left:8%;
+            background-color: rgb(221, 221, 221);
+            margin-right: 20px;
+        }
+
+        .player-info {
+            flex: 1;
+            font-size: 18px;
+            gap: 10px;
+        }
+
+        .section-title {
+            font-size: 25px;
+            margin: 20px 0 10px;
+            font-family: "Luckiest Guy", serif;
+            color: #c1ff72;
+        }
+
+        /* 수상 경력 및 기타 섹션 */
+        .awards,
+        .reasons {
+            margin: 0 auto 30px auto; /* 상단, 하단 여백 */
+            padding: 0 100px; /* 왼쪽 오른쪽 여백 */
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .reasons p {
+            margin-top: 10px;
+        }
+
+        .awards ul {
+            display: flex; /* 플렉스 박스 사용 */
+            flex-wrap: wrap; /* 줄 바꿈 허용 */
+            gap: 10px; /* 항목 간격 추가 */
+            padding: 0;
+            list-style: none; /* 리스트 점 제거 */
+        }
+
+        .awards li {
+            width: 80%; /* 각 항목의 너비 */
+        }
+
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-green">Son&nbsp;&nbsp;&nbsp;HeungMin</span>
+        </div>
+
+        <!-- 상단 섹션 -->
+        <div class="top-section">
+            <!-- 손흥민 사진 -->
+            <img src="pictures/sonHeungMin.webp" alt="손흥민 사진">
+
+            <!-- 선수 정보 -->
+            <div class="player-info">
+                <p>손흥민은 현재 잉글랜드 프리미어리그의 토트넘 홋스퍼에서 활약 중인 대한민국의 축구 선수이다.<br>
+                    놀라운 스피드와 탁월한 골 결정력, 그리고 뛰어난 기술로 전 세계 축구 팬들에게 큰 사랑을 받고 있다.
+                    <br>
+                    손흥민은 아시아 선수 중 최초로 프리미어리그 득점왕에 오른 선수이며, 대한민국 국가대표팀의 주장으로서도
+                    활약하고 있다.<br>
+                    경기력도 뛰어나지만, 겸손한 태도와 프로다운 모습으로 팬들에게 깊은 감동을 주는 선수이다. <br>
+                    2020년에는 푸스카스 상까지 수상하며 세계에서 인정한 가장 아름다우고 뛰어난 골장면을 만들었다. <br>
+                    손흥민은 2008년 8월에 함부르크 SV 유소년팀에서 유럽무대에 첫발을 디뎠고, 이후 2010년 7월부터
+                    1군으로 승격하여 본격적인
+                    프로 생활을 시작했다. <br>
+                    함부루크에서의 뛰어난 활약으로 인해 2013년 7월에 바이에른 레버쿠젠으로 이적하였고, 2015년 8월부터
+                    지금까지 토트넘으로 이적한 이후로
+                    계속해서 핵심 선수의 역할을 맡고 있다.
+                </p>
+            </div>
+        </div>
+
+        <!-- 수상 경력 섹션 -->
+        <div class="awards">
+            <div class="section-title">Awards</div>
+            <ul>
+                <li>2018년 아시안게임 금메달 </li>
+                <li>21-22시즌 프리미어리그 득점왕 </li>
+                <li>2020년 FIFA 푸스카스 상 수상 </li>
+                <li>다수의 프리미어 리그 이달의 선수 수상</li>
+                <li>아시아 축구 연맹(AFC) 올해의 국제 선수상 4회 수상</li>
+            </ul>
+        </div>
+
+        <!-- 내가 좋아하는 이유 섹션 -->
+        <div class="reasons">
+            <div class="section-title">Why I like this Player</div>
+            <p>손흥민 선수는 축구 실력뿐만 아니라 그의 성실한 태도와 겸손함으로 많은 사람들에게 귀감이 되고 있다.<br>
+                항상 매 경기에서 최선을 다하며 팀을 위해 헌신하는 모습이 인상적이다. <br>
+                팬들을 위해 힘들어도 내색하지 않고, 경기가 끝날 때 까지 몸을 불사르며 뛰는 모습이 너무나 존경스럽다. <br>
+                손흥민 선수는 축구 팬으로서의 나의 자부심이자, 나라의 자부심으로도 생각한다.</p>
+        </div>
+
+        <div class="reasons">
+            <div class="section-title">More Information</div>
+            <button class="info-button" onclick="window.open('https://namu.wiki/w/%EC%86%90%ED%9D%A5%EB%AF%BC')">
+                더 알아보기
+                </button>
+        </div>
+    </body>
+</html>

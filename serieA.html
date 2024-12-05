@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>세리에A (이탈리아 리그)</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+        <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #000, #1a1a1a); /* 그라데이션 배경 */
+            color: white;
+            padding-top: 120px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 50px;
+            font-family: "Monoton", sans-serif;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* 텍스트 그림자 */
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-Blue {
+            color: #193af6; /* 진한 보라색 */
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        .main-text .light-blue {
+            color: #4a96ff; /* 연한 보라색 */
+            font-style: italic; 
+            font-weight:bold;
+        }
+
+        .logo-picture {
+            display: block; /* 이미지 블록화 */
+            margin: 0 auto; /* 중앙 정렬 */
+            max-width: 50%; /* 이미지가 부모 너비를 넘지 않도록 제한 */
+            height: auto; /* 이미지 비율 유지 */
+            margin-bottom: 30px; /* 텍스트와 간격 추가 */
+        }
+
+        .p-text{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            align-items: center;
+            margin-left:50%;
+        }
+
+        /* 텍스트 컨테이너 스타일 */
+        .text-container {
+            margin: 30px auto; /* 이미지와 텍스트 간격 */
+            text-align: center;
+            max-width: 1000px; /* 컨테이너 너비 제한 */
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05); /* 약간의 투명 배경 */
+            border-radius: 10px; /* 둥근 테두리 */
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+            color: white;
+        }
+
+        /* 설명 텍스트 스타일 */
+        .description {
+            font-size: 1.2rem; /* 본문 폰트 크기 */
+            line-height: 1.8; /* 줄 간격 */
+            color: #f0f0f0;
+        }
+
+        /* 섹션 스타일 */
+        .section {
+            max-width: 960px; /* 모든 섹션의 최대 너비 동일하게 설정 */
+            margin: 0 auto; /* 중앙 정렬 */
+            padding: 20px; /* 섹션 내부 여백 */
+            background: transparent; /* 배경색 없애기 */
+        }
+
+        .section h1 {
+            font-family: "Luckiest Guy", sans-serif;
+            font-size: 30px;
+            color: #5cce7c;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <!-- 홈 아이콘 -->
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-Blue">Serie</span> <span
+                class="light-blue">A</span>
+        </div>
+        <img src="pictures/serie_A_big.jpg" class="logo-picture" alt="세리에A 로고">
+        <div class="text-container">
+            <p class="description">
+                <div class="section">
+                    <h1>Introduce</h1>
+                    <br>
+                    세리에 A는 이탈리아의 최상위 프로 축구 리그로, 세계에서 가장 오래된 축구 리그 중 하나로 1898년에
+                    시작되었다.
+                    <br>
+                    <br>
+                    세계적으로 유명한 클럽들인 유벤투스, AC 밀란, 인터 밀란 등이 소속되어 있다.
+                    <br>
+                    <br>
+                    세리에A 리그는 이탈리아 축구의 전통과 역사를 상징하며, 많은 팬들에게 사랑받고 있다.
+                    <br>
+                    <br>
+                    UEFA 챔피언스리그에서의 성공을 통해 유럽 축구를 선도해온 리그로, 다수의 전설적인 선수들이 활약했었다.
+                    <br>
+                    <br>
+                    리그의 별칭인 "칼초(Calcio)"는 이탈리아어로 축구를 뜻하며, 이탈리아 축구의 독창성을 나타낸다.
+                </div>
+                <div class="section">
+                    <h1>Feature</h1>
+                    <br>
+                    세리에 A는 전술적 깊이와 수비 조직력이 강점인 리그로, "카테나치오(Catenaccio)" 같은 수비 중심
+                    전술이 유명합니다.
+                    <br>
+                    <br>
+                    최근 몇 년 동안엔 전통적인 수비 스타일에 더해 빠르고 창의적인 공격 축구가 조화를 이루고 있다.
+                    <br>
+                    <br>
+                    세리에A는 전 세계에서 떠오르는 유망주들과 베테랑들이 함께 활약하며 리그의 다양성을 제공한다.
+                    <br>
+                    <br>
+                    입문하게 되는 경기로는 밀라노 더비(AC 밀란 vs 인터 밀란)와 로마 더비(AS 로마 vs 라치오) 등
+                    전통적인 더비 경기를 통해 입문을 많이 한다.
+                </div>
+                <div class="section">
+                    <h1>More Information</h1>
+                    <button class="info-button"
+                        onclick="window.open('https://namu.wiki/w/%EC%84%B8%EB%A6%AC%EC%97%90%20A?from=%EC%84%B8%EB%A6%AC%EC%97%90A', '_blank')">
+                        더 알아보기
+                    </button>
+                </div>
+            </p>
+        </div>
+    </body>
+</html>

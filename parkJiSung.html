@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>박지성</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+        <style>
+       /* 기본 여백과 패딩 초기화 */
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 40px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-white {
+            color: #ffffff;
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        /* 상단 섹션 스타일 */
+        .top-section {
+            display: flex;
+            align-items: flex-start; /* 글 위쪽부터 정렬 */
+            margin-top: 20px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .top-section img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border: 5px solid #5aba30;
+            border-radius: 10px;
+            margin-left:8%;
+            background-color: rgb(221, 221, 221);
+            margin-right: 20px;
+        }
+
+        .player-info {
+            flex: 1;
+            font-size: 18px;
+            gap: 10px;
+        }
+
+        .section-title {
+            font-size: 25px;
+            margin: 20px 0 10px;
+            font-family:"Luckiest Guy", serif;
+            color: #c1ff72;
+        }
+
+        /* 수상 경력 및 기타 섹션 */
+        .awards,
+        .reasons {
+            margin: 0 auto 30px auto; /* 상단, 하단 여백 */
+            padding: 0 100px; /* 왼쪽 오른쪽 여백 */
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .reasons p {
+            margin-top: 10px;
+        }
+
+        .awards ul {
+            display: flex; /* 플렉스 박스 사용 */
+            flex-wrap: wrap; /* 줄 바꿈 허용 */
+            gap: 10px; /* 항목 간격 추가 */
+            padding: 0;
+            list-style: none; /* 리스트 점 제거 */
+        }
+
+        .awards li {
+            width: 45%; /* 각 항목의 너비 */
+        }
+
+        .info-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background: rgb(142, 255, 142);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 버튼 그림자 */
+        transition: transform 0.2s, box-shadow 0.2s; /* 클릭 애니메이션 */
+    }
+
+    .info-button:hover {
+        transform: scale(1.05); /* 커질 때 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        background-color:rgb(80, 255, 80);
+    }
+
+    .info-button:active {
+        transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+    }
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-green">Park&nbsp;&nbsp;&nbsp;JiSung</span>
+        </div>
+
+        <!-- 상단 섹션 -->
+        <div class="top-section">
+            <!-- 손흥민 사진 -->
+            <img src="pictures/parkJiSung.jpeg" alt="박지성 사진">
+
+            <!-- 선수 정보 -->
+            <div class="player-info">
+                <p>박지성은 대한민국 축구 역사상 가장 위대한 선수 중 한 명으로 꼽히며, 잉글랜드 프리미어리그 맨체스터
+                    유나이티드에서 활약하며 세계적인 인정을 받았다.<br>
+                    박지성의 놀라운 체력과 헌신적인 경기 스타일, 다재다능함이 팀의 중요한 일원이 되는 데 기여했다. <br>
+                    박지성은 아시아 선수로서 처음으로 UEFA 챔피언스리그 결승전에 선발 출전하는 영광을 누렸다. <br>
+                    국가대표로서도 2002년 FIFA 월드컵 4강 진출을 이끌며 대한민국 축구 역사에 큰 족적을 남겼다.<br>
+                    맨체스터 유나이티드에서는 7시즌 동안 4번의 프리미어리그 우승과 1번의 챔피언스리그 우승을 차지했다.
+                    <br>
+                    2014년 현역 은퇴 후 아시아 축구 발전을 위해 여러 역할을 맡으며 지속적으로 공헌하고 있다. <br>
+                    박지성은 항상 성실한 태도와 팀을 위한 헌신적인 플레이로 전 세계 축구 팬들에게 귀감이 되고 있다. <br>
+                    그의 별명인 "산소탱크"는 그가 경기 내내 보여주는 지칠 줄 모르는 활동량과 체력을 잘 보여준다. <br>
+                    끊임없는 맨마킹과 수비, 활동성을 통해 많은 전설적인 선수들의 공격을 막아낸 것으로 유명하다. 
+                </p>
+            </div>
+        </div>
+
+        <!-- 수상 경력 섹션 -->
+        <div class="awards">
+            <div class="section-title">Awards</div>
+            <ul>
+                <li>2002년 FIFA 월드컵 4강 진출 (대한민국)</li>
+                <li>2008-09시즌 UEFA 챔피언스리그 우승</li>
+                <li>프리미어리그 우승 4회 (2006-07, 2007-08, 2008-09, 2010-11)</li>
+                <li>2008년 FIFA 클럽 월드컵 우승</li>
+                <li>네덜란드 에레디비시 우승 2회 (PSV 에인트호번)</li>
+                <li>2005년 네덜란드 KNVB 컵 우승</li>
+                <li>2007년 프리미어리그 아시아 투어 MVP</li>
+                <li>2002년 아시안 게임 동메달</li>
+                <li>대한민국 축구협회 올해의 선수상 3회</li>
+                <li>2002년 대한민국 체육훈장 맹호장</li>
+            </ul>
+        </div>
+
+        <!-- 내가 좋아하는 이유 섹션 -->
+        <div class="reasons">
+            <div class="section-title">Why I like this Player</div>
+            <p>박지성 선수는 성실함과 헌신적인 경기 스타일로 대한민국을 넘어 세계적으로 큰 영향을 끼쳤다.<br>
+                항상 팀을 위해 헌신하며 묵묵히 자신의 역할을 다하는 모습이 큰 감동을 주었다.<br>
+                그는 스타 플레이어임에도 불구하고 항상 겸손하며, 자신의 자리에서 최선을 다하는 태도를 보여준다.<br>
+                박지성 선수의 경기를 볼 때마다 축구에 대한 열정과 팀을 위한 희생정신을 느낄 수 있다.<br>
+                그는 축구 팬으로서 나에게 많은 영감을 주었으며, 축구뿐만 아니라 인생의 태도에서도 배울 점이 많은 선수다.<br>
+                최근에는 무릎 상태가 좋지 않음에도 불구하고 친선경기에서 팬들을 위해 열심히 뛰어주는 모습에서 감동을 느끼기도 하였다. </p>
+        </div>
+
+        <div class="reasons">
+            <div class="section-title">More Information</div>
+            <button class="info-button" onclick="window.open('https://namu.wiki/w/%EB%B0%95%EC%A7%80%EC%84%B1')">
+                더 알아보기
+                </button>
+        </div>
+    </body>
+</html>

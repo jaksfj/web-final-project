@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>김민재가 좋아하는 선수들</title>
+        <!-- 구글 폰트 링크 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+
+        <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-green {
+            color: #5aba30; /* 진한 초록색 */
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        .main-text .light-green {
+            color: #c1ff72; /* 연한 초록색 */
+            font-style: italic; 
+            font-weight:bold;
+        }
+
+        .player-container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #222;
+            color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .player-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .player-table thead {
+            background-color: #5fcb00;
+            color:black;
+        }
+
+        .player-table th, .player-table td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+        }
+
+        .player-table tbody tr {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .player-table tbody tr:hover {
+            background-color: #111;
+        }
+
+        .player-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .player-name {
+            font-family: "Oswald", sans-serif;
+            font-weight: 1000px;
+            font-size: 18px;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            cursor: pointer;
+            width: 42px; 
+            height: 42px; 
+            margin-right: 15px; /* 검색 아이콘과의 간격 */
+        }
+
+    </style>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="#leagues"
+                    onclick="window.location.href = 'leagues.html'">리그</a>
+                <a href="#teams"
+                    onclick="window.location.href = 'teams.html'">팀</a>
+                <a href="#players"
+                    onclick="window.location.href = 'players.html'">선수</a>
+                <a href="#matches"
+                    onclick="window.location.href = 'matches.html'">경기</a>
+                <a href="#communities"
+                    onclick="window.location.href = 'communites_sites.html'">커뮤니티
+                    & 사이트</a>
+            </div>
+            <div class="navbar-right">
+                <!-- 홈 아이콘 -->
+                <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘"
+                    onclick="window.location.href = 'main_page.html'">
+                <!-- 검색 아이콘 -->
+                <img src="pictures/search_icon3.png" class="search-icon"
+                    alt="검색 아이콘" onclick="toggleSearch()">
+
+                <!-- 아날로그 시계 -->
+                <div class="clock">
+                    <div class="hand hour"></div>
+                    <div class="hand minute"></div>
+                    <div class="hand second"></div>
+                </div>
+
+                <!-- 숨겨진 검색 폼 -->
+                <form id="search-form" onsubmit="return searchFunction(event);">
+                    <span id="search-close" onclick="toggleSearch()">✕</span>
+                    <!-- 닫기 버튼 -->
+                    <select id="search-category">
+                        <option value>대분류를 선택하세요</option>
+                        <option value="leagues">리그</option>
+                        <option value="teams">팀</option>
+                        <option value="players">선수</option>
+                        <option value="matches">경기</option>
+                        <option value="communities">커뮤니티 & 사이트</option>
+                    </select>
+                    <select id="search-keyword">
+                        <option value>대분류를 먼저 선택하세요</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-text">
+            <span class="strong-green">My&nbsp;&nbsp;&nbsp;Favorite</span> <span
+                class="light-green">Players</span>
+        </div>
+        <!-- 팀 리스트 -->
+        <div class="player-container">
+            <table class="player-table">
+                <thead>
+                    <tr>
+                        <th>좋아하는 순위</th>
+                        <th>Player</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr onclick="window.location.href='sonHeungMin.html'">
+                        <td>1</td>
+                        <td><img src="pictures/sonHeungMin.webp" alt="손흥민"
+                                class="player-photo"><span
+                                class="player-name">Son&nbsp;Heung-Min</span></td>
+                    </tr>
+                    <tr onclick="window.location.href='parkJiSung.html'">
+                        <td>2</td>
+                        <td><img src="pictures/parkJiSung2.png" alt="박지성"
+                                class="player-photo"><span
+                                class="player-name">Park&nbsp;Ji-Sung</span></td>
+                    </tr>
+                    <tr onclick="window.location.href='kimMinJae.html'">
+                        <td>3</td>
+                        <td><img src="pictures/kimMinJae.webp" alt="김민재"
+                                class="player-photo"><span
+                                class="player-name">Kim&nbsp;Min-Jae</span></td>
+                    </tr>
+                    <tr onclick="window.location.href='lionelMessi.html'">
+                        <td>4</td>
+                        <td><img src="pictures/lionelMessi.webp" alt="리오넬 메시"
+                                class="player-photo"><span
+                                class="player-name">Lionel&nbsp;Messi</span></td>
+                    </tr>
+                    <tr onclick="window.location.href='robertLewandowski.html'">
+                        <td>5</td>
+                        <td><img src="pictures/robertLewandowski.webp"
+                                alt="로베르토 레반도프스키" class="player-photo"><span
+                                class="player-name">Robert&nbsp;Lewandowski</span></td>
+                    </tr>
+                    <tr onclick="window.location.href='toniKroos.html'">
+                        <td>6</td>
+                        <td><img src="pictures/toniKroos.webp" alt="토니 크로스"
+                                class="player-photo"><span
+                                class="player-name">Toni&nbsp;Kroos</span></td>
+                    </tr>
+                    <tr onclick="window.location.href='pele.html'">
+                        <td>7</td>
+                        <td><img src="pictures/pele.webp" alt="펠레"
+                                class="player-photo"><span
+                                class="player-name">Pele</span></td>
+                    </tr>
+                    <tr onclick="window.location.href='carlesPuyol.html'">
+                        <td>8</td>
+                        <td><img src="pictures/carlesPuyol4.avif" alt="카를로스 푸욜"
+                                class="player-photo"><span
+                                class="player-name">Carles&nbsp;Puyol</span></td>
+                    </tr>
+                    <tr onclick="window.location.href='ronaldo.html'">
+                        <td>9</td>
+                        <td><img src="pictures/ronaldo2.jpeg" alt="호나우두"
+                                class="player-photo"><span
+                                class="player-name">Ronaldo</span></td>
+                    </tr>
+                    <tr onclick="window.location.href='zidane.html'">
+                        <td>10</td>
+                        <td><img src="pictures/zidane.webp" alt="지단"
+                                class="player-photo"><span
+                                class="player-name">Zinedine&nbsp;Zidane</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

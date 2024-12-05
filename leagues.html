@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김민재가 좋아하는 리그들</title>
+    <!-- 구글 폰트 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Monoton&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.css"> <!-- 네비게이션 바 css -->
+    <style>
+        /* 기본 여백과 패딩 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 바디 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* 백그라운드 이미지 제거 */
+            color: white;
+            padding-top:100px;
+        }
+
+        /* 메인 텍스트 스타일 */
+        .main-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: "Monoton", sans-serif;
+        }
+
+                /* 텍스트 색상 설정 */
+        .main-text .strong-green {
+            color: #5aba30; /* 진한 초록색 */
+            margin-right:30px;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+        .main-text .light-green {
+            color: #c1ff72; /* 연한 초록색 */
+            font-style: italic; 
+            font-weight:bold;
+        }
+
+        .league-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto; /* 가운데 정렬 */
+            padding-top:20px;
+            grid-template-columns: repeat(3,1fr); /* 3열 레이아웃 */
+            gap: 30px;
+        }
+
+        .league-card {
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .league-card:hover{
+            transform: translateY(-10px); /* 약간 들리는 효과 */
+        }
+
+        .league-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background:#ffffff;
+        }
+
+        .league-content {
+            padding: 15px;
+        }
+
+        .league-title {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .league-card:hover .league-title{
+            color:#FFD700;
+            transition: color 0.3s ease; /* 자연스러운 색상 변화 */
+        }
+
+        .league-description {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+            color: #FFD700;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            cursor: pointer;
+            width: 42px; 
+            height: 42px; 
+            margin-right: 15px; /* 검색 아이콘과의 간격 */
+        }
+    </style>
+    <script src="main.js"></script>
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="#leagues" onclick="window.location.href = 'leagues.html'">리그</a>
+            <a href="#teams" onclick="window.location.href = 'teams.html'">팀</a>
+            <a href="#players" onclick="window.location.href = 'players.html'">선수</a>
+            <a href="#matches" onclick="window.location.href = 'matches.html'">경기</a>
+            <a href="#communities" onclick="window.location.href = 'communites_sites.html'">커뮤니티 & 사이트</a>
+        </div>
+        <div class="navbar-right">
+            <!-- 홈 아이콘 -->
+            <img src="pictures/home-icon.png" class="home-icon" alt="홈 아이콘" onclick="window.location.href = 'main_page.html'">
+            <!-- 검색 아이콘 -->
+            <img src="pictures/search_icon3.png" class="search-icon" alt="검색 아이콘" onclick="toggleSearch()">
+            
+            <!-- 아날로그 시계 -->
+            <div class="clock">
+                <div class="hand hour"></div>
+                <div class="hand minute"></div>
+                <div class="hand second"></div>
+            </div>
+        
+            
+            <!-- 숨겨진 검색 폼 -->
+            <form id="search-form" onsubmit="return searchFunction(event);">
+                <span id="search-close" onclick="toggleSearch()">✕</span> <!-- 닫기 버튼 -->
+                <select id="search-category">
+                    <option value="">대분류를 선택하세요</option>
+                    <option value="leagues">리그</option>
+                    <option value="teams">팀</option>
+                    <option value="players">선수</option>
+                    <option value="matches">경기</option>
+                    <option value="communities">커뮤니티 & 사이트</option>
+                </select>
+                <select id="search-keyword">
+                    <option value="">대분류를 먼저 선택하세요</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <div class="main-text">
+        <span class="strong-green">My&nbsp;&nbsp;&nbsp;Favorite</span> <span class="light-green">Leagues</span>
+    </div>
+    <div class="league-container">
+        <!-- 각 리그 카드 -->
+        <div class="league-card" onclick="window.location.href='premierleague.html'">
+            <img src="pictures/premier_league.png" alt="프리미어 리그" class="league-image">
+            <div class="league-content">
+                <h2 class="league-title">프리미어 리그</h2>
+                <p class="league-description">잉글랜드 최고의 축구 리그</p>
+            </div>
+        </div>
+
+        <div class="league-card" onclick="window.location.href='la_liga.html'">
+            <img src="pictures/la_liga.svg" alt="라리가" class="league-image">
+            <div class="league-content">
+                <h2 class="league-title">라리가</h2>
+                <p class="league-description">스페인에서 가장 높은 수준의 축구 리그</p>
+            </div>
+        </div>
+
+        <div class="league-card" onclick="window.location.href='serieA.html'">
+            <img src="pictures/Serie_A.svg.png" alt="세리에 A" class="league-image">
+            <div class="league-content">
+                <h2 class="league-title">세리에 A</h2>
+                <p class="league-description">이탈리아의 프리미어 리그</p>
+            </div>
+        </div>
+
+        <!-- 더 많은 리그 카드 추가 -->
+         <div class="league-card" onclick="window.location.href='bundesliga.html'">
+            <img src="pictures/Bundesliga_logo_(2017).svg.png" alt="분데스리가" class="league-image">
+            <div class="league-content">
+                <h2 class="league-title">분데스리가</h2>
+                <p class="league-description">독일의 프로축구 리그</p>
+            </div>
+         </div>
+
+        <div class="league-card" onclick="window.location.href='ligue1.html'">
+            <img src="pictures/ligue1_new.jpg" alt="리그앙" class="league-image">
+            <div class="league-content">
+                <h2 class="league-title">리그앙</h2>
+                <p class="league-description">프랑스의 프로 축구 리그</p>  
+            </div>
+        </div>
+
+        <div class="league-card" onclick="window.location.href='eredivisie.html'">
+            <img src="pictures/eredivisie.svg" alt="에레디비시" class="league-image">
+            <div class="league-content">
+                <h2 class="league-title">에레디비시</h2>
+                <p class="league-description">네덜란드의 프로 축구 리그</p>  
+            </div>
+        </div>
+
+        <div class="league-card" onclick="window.location.href='kleague.html'">
+            <img src="pictures/kleague.svg" alt="k리그" class="league-image">
+            <div class="league-content">
+                <h2 class="league-title">K리그</h2>
+                <p class="league-description">대한민국의 프로 축구 리그</p>  
+            </div>
+        </div>
+
+        <div class="league-card" onclick="window.location.href='primeiraLiga.html'">
+            <img src="pictures/premeira_liga.svg" alt="프리메이라리가" class="league-image">
+            <div class="league-content">
+                <h2 class="league-title">프리메이라리가</h2>
+                <p class="league-description"> 포르투갈 프로 축구 리그</p>  
+            </div>
+        </div>
+
+        <div class="league-card" onclick="window.location.href='superLig.html'">
+            <img src="pictures/superlig2.svg" alt="쉬페르리그" class="league-image">
+            <div class="league-content">
+                <h2 class="league-title">쉬페르리그</h2>
+                <p class="league-description">터키의 프로 축구 리그</p>  
+            </div>
+        </div>
+
+        <div class="league-card" onclick="window.location.href='jleague.html'">
+            <img src="pictures/jleague.jpg" alt="J리그" class="league-image">
+            <div class="league-content">
+                <h2 class="league-title">J리그</h2>
+                <p class="league-description">일본의 프로 축구 리그</p>  
+            </div>
+        </div>
+    </div>
+</body>
+</html>
